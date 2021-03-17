@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>c0pydump | m4rcix</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="c0pydump" />
+<meta name="author" content="m4rcix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Oh boy, was I blind" />
+<meta property="og:description" content="Oh boy, was I blind" />
+<link rel="canonical" href="https://m4rcix.github.io/SecChall21/pwn/c0pydump" />
+<meta property="og:url" content="https://m4rcix.github.io/SecChall21/pwn/c0pydump" />
+<meta property="og:site_name" content="m4rcix" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="c0pydump" />
+<script type="application/ld+json">
+{"description":"Oh boy, was I blind","@type":"BlogPosting","headline":"c0pydump","dateModified":"2021-03-17T00:00:00+00:00","datePublished":"2021-03-17T00:00:00+00:00","url":"https://m4rcix.github.io/SecChall21/pwn/c0pydump","author":{"@type":"Person","name":"m4rcix"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://m4rcix.github.io/SecChall21/pwn/c0pydump"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">m4rcix<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        
+        
+        <a class="color-cyan-hover" href="https://twitter.com/MarcixWasTaken"><i class="fab fa-twitter-square"></i></a>
+        
+        
+        
+        <a class="color-purple-hover" href="https://www.twitch.tv/marcix"><i class="fab fa-twitch"></i></a>
+        
+        
+        
+        <a class="color-red-hover" href="https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA"><i class="fab fa-youtube"></i></a>
+        
+        
+        
+        <a class="color-yellow-hover" href="https://github.com/m4rcix"><i class="fab fa-github-square"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://www.linkedin.com/in/marton-bak-574a59201/"><i class="fab fa-linkedin"></i></a>
+        
+        
+        
+        <a class="color-green-hover" href="https://app.hackthebox.eu/profile/367067"><i class="fa fa-cube"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://discord.com/invite/wGHG5Aj"><i class="fab fa-discord"></i></a>
+        
+        
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<div class="post">
+  <h1 class="post-title">c0pydump</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/pwn/">pwn</a>
+      
+      <a class="tag" href="/tag/secchallenge/">secchallenge</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 17 Mar 2021</div>
+  
+  <noscript>
+    <div class="post-description">Oh boy, was I blind</div>
+  </noscript>
+  <div id="animated-post-description" class="post-description" style="display: none;"></div>
+  
+  <h2 id="description">Description</h2>
+
+<p>Welcome to our printing service c0pydump! It is a highly secure application. Can you acquire the flag?</p>
+
+<p><code class="language-plaintext highlighter-rouge">nc challenges.crysys.hu 5006</code></p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Difficulty: easy</li>
+  <li>Attachment: <a href="/media/SecChall21/Pwn/c0pydump/c0pydump">c0pydump</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-basic-information">0x1 basic information</h3>
+
+<p>Running checksec on the file, it gives us the following information:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>checksec <span class="nt">--file</span><span class="o">=</span>c0pydump
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"c0pydump"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"relro"</span><span class="p">:</span><span class="s2">"partial"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"canary"</span><span class="p">:</span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nx"</span><span class="p">:</span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pie"</span><span class="p">:</span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rpath"</span><span class="p">:</span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"runpath"</span><span class="p">:</span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbols"</span><span class="p">:</span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fortify_source"</span><span class="p">:</span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fortified"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fortify-able"</span><span class="p">:</span><span class="s2">"3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Connecting to the address given above with <code class="language-plaintext highlighter-rouge">nc</code> we can observe the application:
+It basically gets some input from STDIN and prints it out for us.</p>
+
+<p>After this, I loaded the binary into <a href="https://ghidra-sre.org/">Ghidra</a>, and it didn’t take too long until I found this gem right here: a format string exploit</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">param_1</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"Printing document..."</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="n">param_1</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Document printed!"</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="0x2-exploitation">0x2 exploitation</h3>
+
+<p>Okay, we know its a format string exploit, so lets test some stuff out:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Scanning...
+%6$p
+Document scanned!
+Printing document...
+0x55cb55f8d3b0
+Document printed!
+</code></pre></div></div>
+<p>Just as expected, we get some random address back from the stack.</p>
+
+<p>Now here comes the part I struggled to understand. When debugging the program locally with gdb, I quickly found the address the flag was loaded to, just had to break between the <code class="language-plaintext highlighter-rouge">fopen</code> and <code class="language-plaintext highlighter-rouge">fgets</code> calls:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0x555555555344 &lt;main+154&gt;       lea    rdi, [rip+0x2d55]        # 0x5555555580a0 &lt;flag&gt;
+  0x55555555534b &lt;main+161&gt;       call   0x555555555080 &lt;fgets@plt&gt;
+→ 0x555555555350 &lt;main+166&gt;       mov    rax, QWORD PTR [rbp-0x38]
+
+</code></pre></div></div>
+
+<p>From here, all we have to do is write this address to the stack, and read the flag from there using <code class="language-plaintext highlighter-rouge">%s</code> format string…. Is what you could do, if the binary was loaded to the same address every time, which of course it wasn’t.</p>
+
+<p>However, if you could calculate the offset between a known address, i.e. something on the stack, and the flag, you could read the address from the stack, increment the address with the offset, and then write that address to the stack, and read from it. This is what I ended up doing, and probably the right thing to do, but let’s understand it (somewhat).</p>
+
+<p>The addresses are randomized, how can you get an offset then, if they always change? Well, here comes the learning part. Apparently, gdb loads the binary to the same address, even with address randomization. Why? Long story short, this is how gdb operates. So if you were to use the format string exploit when running gdb, it would leak the same global address every time, and you could calculate the offset.</p>
+
+<p>After this, all you have to do is:</p>
+<ul>
+  <li>calculate the offset locally</li>
+  <li>read the address, you calculated the offset to</li>
+  <li>increment the address returned</li>
+  <li>write it on the stack using the program, and jump to it</li>
+</ul>
+
+<p>This is easily achieved with pwntools: (since this would count as a ‘one-click’ solution, so I’m hiding it until the end of the semester)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">try</span><span class="p">:</span>
+	<span class="n">conn</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s">'challenges.crysys.hu'</span><span class="p">,</span> <span class="mi">5006</span><span class="p">)</span>
+	<span class="p">...</span>
+</code></pre></div></div>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd21{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/SecChall21">← Back to SecChallenge21</a></p>
+
+</div>
+
+
+
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/crypto/" class="set-1">crypto</a> <a href="/tag/crysys/" class="set-1">crysys</a> <a href="/tag/dnspy/" class="set-1">dnSpy</a> <a href="/tag/hardware/" class="set-2">hardware</a> <a href="/tag/misc/" class="set-2">misc</a> <a href="/tag/pwn/" class="set-1">pwn</a> <a href="/tag/reverse/" class="set-1">reverse</a> <a href="/tag/secchallenge/" class="set-5">secchallenge</a> <a href="/tag/web/" class="set-2">web</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = 'Oh boy, was I blind';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits"><a href="https://github.com/bitbrain/jekyll-dash">dash</a> theme for Jekyll by <a href="https://github.com/bitbrain">bitbrain</a> made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

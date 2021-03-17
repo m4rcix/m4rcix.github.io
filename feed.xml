@@ -1,2 +1,523 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://m4rcix.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m4rcix.github.io/" rel="alternate" type="text/html" /><updated>2021-02-18T12:58:51+00:00</updated><id>https://m4rcix.github.io/feed.xml</id><title type="html">m4rcix</title><subtitle>*in my best possible Obi-Wan Kenobi impression* Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)
-</subtitle><author><name>m4rcix</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://m4rcix.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m4rcix.github.io/" rel="alternate" type="text/html" /><updated>2021-03-17T20:22:43+00:00</updated><id>https://m4rcix.github.io/feed.xml</id><title type="html">m4rcix</title><subtitle>*in my best possible Obi-Wan Kenobi impression* Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)
+</subtitle><author><name>m4rcix</name></author><entry><title type="html">CrySyS Security Challenge 2021</title><link href="https://m4rcix.github.io/SecChall21" rel="alternate" type="text/html" title="CrySyS Security Challenge 2021" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/secchall21</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21">&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;This blogpost contains my writeups for the CrySyS Security Challenge 2021!&lt;/p&gt;
+
+&lt;p&gt;Flags are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HIDDEN&lt;/code&gt; until the end of the semester due to University reasons.&lt;/p&gt;
+
+&lt;p&gt;The tables below contain my solution for some of the challenges. I did not managed to solve a lot, but plan on solving some more until they are available. The Solved column indicates the challenges I managed to solve during the challenge period.&lt;/p&gt;
+
+&lt;h2 id=&quot;crypto&quot;&gt;Crypto&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/crypto/mono_madmax&quot;&gt;Monoalphabetic MadMax&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Stateless&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Prerecorded&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Variable length mtp&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Oracle&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;pwn&quot;&gt;Pwn&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/pwn/c0pydump&quot;&gt;c0pydump&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Guidance to Salvation&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;KUVID21&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Roguelike&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Conundrum at El Nit Patroon Rico&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;reverse&quot;&gt;Reverse&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/reverse/serial&quot;&gt;SerialHacker&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;:)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Xenia Laurencia Maria&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Celestial Yarr Harr Harr&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;JuniorPK&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;web&quot;&gt;Web&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/sqplosion&quot;&gt;SQpLosIon&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/manual&quot;&gt;Manual for the apocalypse&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/unTILDEend&quot;&gt;Until the end&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/poison&quot;&gt;Poison for tomorrow&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Jinja ninja&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/escape&quot;&gt;Escape the chains&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/gates_of_valhalla&quot;&gt;The gates of Valhalla&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/safe&quot;&gt;A safe place&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/crystal&quot;&gt;Crystal from the past&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;SPIcy information&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/weeb&quot;&gt;キーボード・レイアウト&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/iusearchbtw&quot;&gt;I use arch btw&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/little_mix&quot;&gt;Little Mix&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/TBD&quot;&gt;TBD&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Lost &amp;amp; Found&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>m4rcix</name></author><category term="secchallenge" /><category term="crysys" /><category term="CTF" /><category term="pwn" /><category term="crypto" /><category term="web" /><category term="hardware" /><category term="misc" /><category term="reverse" /><summary type="html"> </summary></entry><entry><title type="html">Monoalphabetic MadMax</title><link href="https://m4rcix.github.io/SecChall21/crypto/mono_madmax" rel="alternate" type="text/html" title="Monoalphabetic MadMax" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/crypto/mono_madmax</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/crypto/mono_madmax">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;You love it, you hate it, it doesn’t matter this is monoalphabetic.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: Suma&lt;/li&gt;
+  &lt;li&gt;Difficulty: easy&lt;/li&gt;
+  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Crypto/Mono/enc.txt&quot;&gt;enc.txt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Just reading the title of the challenge, it was clear we are facing a monoalphabetic substitution cipher. A quick google search led me to this &lt;a href=&quot;https://www.dcode.fr/monoalphabetic-substitution&quot;&gt;site&lt;/a&gt;. Pasting the text and decoding it, gives us readable information: the script of Mad Max 2: The Road Warrior. One “feature”, this site has, is it only gives a fixed number of characters as output, so I had to move the flag from the middle of the file to the top. (It was easy to find, thanks to the curly brackets)&lt;/p&gt;
+
+&lt;p&gt;The acquired flag is:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="crypto" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">Crystal from the past</title><link href="https://m4rcix.github.io/SecChall21/hardware/crystal" rel="alternate" type="text/html" title="Crystal from the past" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/crystal</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/crystal">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- Hey, Nux! Look at this crystal! It's almost as nice as a V8 engine!
+- What?
+- It looks like... a chrome... thingy.
+- What are you talking about. Let me see.
+- NO! ITS MINE! I... MUST... DRAW!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;One of Nux’s weirdo friend found a mesmerizing crystal in the desert. After taking it with him, he got posessed with it. He tells weird jokes no one understands, and draws a lot on his shitty computer using an unrecognizeable graphic tablet as old as mankind. However, he won’t let you see the drawings, thus, you installed a packet sniffer on his computer.&lt;/p&gt;
+
+&lt;p&gt;You managed to get a pcap of one of his drawing. He starts every session by calibrating the graphic tablet. This is achieved by drawing a horizontal and a vertical line, pushing the tip of the pen (draw force calibration), and tilting the pen around.&lt;/p&gt;
+
+&lt;p&gt;Your task is to recover the picture he drew.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: Csf3r3ncz1&lt;/li&gt;
+  &lt;li&gt;Difficulty: medium&lt;/li&gt;
+  &lt;li&gt;Attachments: &lt;a href=&quot;/media/SecChall21/Hardware/Crystal/calibration.pcap&quot;&gt;calibration.pcap&lt;/a&gt;, &lt;a href=&quot;/media/SecChall21/Hardware/Crystal/challenge.pcap&quot;&gt;challenge.pcap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;I started this challenge with looking at the given &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calibration.pcap&lt;/code&gt; file inside Wireshark. I noticed the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USB descriptor&lt;/code&gt; but since google didn’t gave me an understandable protocol description easily, I tried to understand the sent bytes in a logical manner. We knew the following from the description:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Our guy starts with a horizontal line&lt;/li&gt;
+  &lt;li&gt;Followed by a vertical line&lt;/li&gt;
+  &lt;li&gt;Then some other calibration stuff&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This meant to me, I am looking for an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; variable sent, signaling the pen’s position, and some other stuff, which might be handy later, e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;force&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tilt&lt;/code&gt;. I exported the captured data from Wireshark, and started working. (Yes I knew about PyShark, but I couldn’t make it to work, since it failed to load the data from me from the packets.) This is the script I came up with, which loads the data, and then plots it to a diagram.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#!/bin/env python3
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./calibration.data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#file = open('./chall.data', 'r')
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#Read data from capture
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readlines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'02'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;s&quot;&gt;'idk'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+			&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+			&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+			&lt;span class=&quot;s&quot;&gt;'force'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+			&lt;span class=&quot;s&quot;&gt;'tilt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#Plot the data
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/SecChall21/Hardware/Crystal/calibration.png&quot; alt=&quot;calibration.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From here I started working with the real data, however on the first render it looked quite a mess. Of course, up until now I only used the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; variables, so I figured I would tinker a little bit with the other values. This setup gave me a clear enough diagram, so I could read the flag:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14700&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'tilt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'force'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The acquired flag is:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="hardware" /><category term="crypto" /><summary type="html">Description</summary></entry><entry><title type="html">Escape The Chains</title><link href="https://m4rcix.github.io/SecChall21/hardware/escape" rel="alternate" type="text/html" title="Escape The Chains" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/escape</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/escape">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;As you wake up, the first thing you notice is a headache. The second one is that you are in the back of a vehicle you do not remember entering. You hear unfamiliar voices outside. Something about an “important device” and “the apocalypse”. While it sounds fairly interesting, you can’t make out the details.&lt;/p&gt;
+
+&lt;p&gt;Sitting up, you notice something on your legs. No one seems to be around, so You are free to take a closer look. It looks like a fancy cuff. On the device, You notice what appears to be a connector, labeled UART…&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://escape-the-chains.secchallenge.crysys.hu&quot;&gt;https://escape-the-chains.secchallenge.crysys.hu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: If you believe to have successfully connected, but receive no feedback from the device, you might want to ask it to help you.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: Wintermute, Csf3r3ncz1&lt;/li&gt;
+  &lt;li&gt;Difficulty: easy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;When opening the website, we are greeted with what seems like a CLI, and some cables on the top left. From the challenge description it was clear, we had to do some UART stuff, firstly wire the device up. I have done some UART communication before, but if you are unsure what to do, you can always just use google, to search for some &lt;a href=&quot;https://learn.sparkfun.com/tutorials/serial-communication/wiring-and-hardware&quot;&gt;wiring&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;After this I started looking for commands to connect to the device with. I used to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;picocom&lt;/code&gt; but had no luck there. Maybe we can look at stuff? The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; command worked, and we see some directories:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin
+dev
+boot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Alright, let’s look at the contents of bin, that can surely help us:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /bin
+&lt;span class=&quot;nb&quot;&gt;ls
+id
+&lt;/span&gt;ttycon
+lsusb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Two of them seem interesting, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ttycon&lt;/code&gt; probably used to actually connect to the device, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsusb&lt;/code&gt; which I haven’t seen before, but should do something right?&lt;/p&gt;
+
+&lt;p&gt;Right. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsusb&lt;/code&gt; listed some useful information which we could use to later give parameters to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ttycon&lt;/code&gt; command after some research. After some researching, I finally managed to connect without recieving random BS (which signals you messed up something with the connection)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ttycon -baud-rate 115200 -data-bits 8 -stop-bits 1 dev/ttyUSB0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We get yet another terminal, but this time, we are giving instructions to the handcuffs, not to our trusty &lt;a href=&quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&quot;&gt;Banana Tau&lt;/a&gt; :). After trying a few random commands that came into mind, one finally does something useful, very useful indeed.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;help
+available commands: check-updates, factory-reset, help, system-info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Hmmmmmmmmmmmmmmm. Factory-resetting a handcuff? What could go wrong honestly. Let’s try that. After issuing the command, we are presented with the flag:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="hardware" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">The gates of Valhalla</title><link href="https://m4rcix.github.io/SecChall21/hardware/gates_of_valhalla" rel="alternate" type="text/html" title="The gates of Valhalla" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/gates</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/gates_of_valhalla">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;We’re here! We’re finally here! The gates of Valhalla! What an ancient and robust device! I can’t believe I’ll finally enter Valhalla and join the glorious V8 gang! But how do I open it?&lt;/p&gt;
+
+&lt;p&gt;You’ve arrived at the gates of Valhalla. Unfortunately, the gates are closed. There is a control board with a bunch of switches next to the door, and a plaque above saying Only the worthy shall enter the gates of Valhalla. There is a circuit engraved on the plaque. We’ve attached it as a picture to this challenge. Can you open the gates of Valhalla?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: Csf3r3ncz1&lt;/li&gt;
+  &lt;li&gt;Difficulty: medium&lt;/li&gt;
+  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Hardware/Valhalla/Gates_of_Valhalla.png&quot;&gt;Gates_of_Valhalla.png&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;We were given the image linked above, and that’s all. But that’s all what I needed. It was pretty clear what we needed, find the input (probably the flag) which gave 1 as the output. I opened the image in Photoshop, zoomed in, put on my favourite megamix from youtube, and started working. It helped me in the beginning to enter the known digits below. (You know the flag is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd21{.*}&lt;/code&gt; so the first five letters are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd21{&lt;/code&gt; in binary, and the last is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;}&lt;/code&gt; in binary).&lt;/p&gt;
+
+&lt;p&gt;After about an hour of work, I was presented with the flag, almost audible in Pepe’s voice:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="hardware" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">A safe place</title><link href="https://m4rcix.github.io/SecChall21/hardware/safe" rel="alternate" type="text/html" title="A safe place" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/safe</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/safe">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;V8? What did they mean by leaving V8 behind on the ACME servers? Perhaps the war boys deleted the manual? They must have a copy of it! Wait a minute… I remember that Joe has a little home made safe in his room. Maybe its in there?&lt;/p&gt;
+
+&lt;p&gt;You examine the safe, and there is a display on the front, a dial and two buttons. It feels like that the whole thing is made out of scrap electronics. The dial rotates like a rotary encoder, and the thing beeps as you press the buttons. You managed to take the cover off the dial and the next button. Bingo! You can see the rotary encoder and the button’s connectors. You hook up your trusty logic analyzer, and wait for Joe to unlock it. After a few hours, you managed to log the signals while the safe has been opened, but it looks like the encoder is not the best quality.&lt;/p&gt;
+
+&lt;p&gt;Your task is to figure out the code and open the safe. The counter starts from 0. After you figure out the code, you can use the webpage to enter it on the safe, and receive the flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://a-safe-place.secchallenge.crysys.hu&quot;&gt;https://a-safe-place.secchallenge.crysys.hu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The webpage shall be only used for code verification and flag retrieval. Please do not try to brute force the code via the webpage, you’ll not succeed.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: Csf3r3ncz1&lt;/li&gt;
+  &lt;li&gt;Difficulty: medium&lt;/li&gt;
+  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Hardware/Safe/safe_challenge.sal&quot;&gt;safe_challenge.sal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Looking at other challenges already, I knew a program to open &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.sal&lt;/code&gt; files with, called &lt;a href=&quot;https://discuss.saleae.com/&quot;&gt;Salae Logic 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The challenge said something about &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rotary encoder&lt;/code&gt; so I googled and found &lt;a href=&quot;https://en.wikipedia.org/wiki/Rotary_encoder&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I opened the given file with Salae Logic 2, and started looking at the signals. Some few key points from the linked wiki page, which helped me understand and solve the challenge easily.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If A is followed by B rotation is positive&lt;/li&gt;
+  &lt;li&gt;If B is followed by A rotation is negative&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I almost started coding when I realized two things:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The signals are noisy, which would make it problemmatic to detect by script&lt;/li&gt;
+  &lt;li&gt;There aren’t that many rotations that I cannot solve this by hand&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So I started working. When you launch the site, it starts from 0, so that’s where I started, counting the rotations tirelessly. After a bit, I had the combination at hand. (Which I won’t share, since it would be a freebie after that)&lt;/p&gt;
+
+&lt;p&gt;The acquired flag is:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><summary type="html">Description</summary></entry><entry><title type="html">I use arch btw</title><link href="https://m4rcix.github.io/SecChall21/misc/iusearchbtw" rel="alternate" type="text/html" title="I use arch btw" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/iusearchbtw</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/iusearchbtw">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;“If you don’t fight with your OS for at least 2 hours a day for basic functionality, you’re not a real man.” ~Sun Tzu&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: chronos&lt;/li&gt;
+  &lt;li&gt;Difficulty: easy&lt;/li&gt;
+  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Misc/Iusearch/i_use_arch_btw.png&quot;&gt;i_use_arch_btw.png&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Since this looked like a stego challenge, I started working my usual stego toolkit. The first tool that got me something was &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zsteg&lt;/code&gt;. It printed something that looked terrifying:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;i the linux way i the linux way use i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch the linux use arch arch arch arch arch arch i way use btw arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch i way use arch btw arch arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch the linux use linux linux linux linux i way use btw arch arch arch arch arch arch arch arch arch arch arch arch arch arch btw btw i arch arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch i way use arch arch arch btw i arch arch arch the linux use linux linux linux linux linux i way use btw linux linux linux linux linux linux linux btw i arch arch arch the linux use arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch arch i way use arch btw arch btw linux linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch the linux use linux linux linux linux i way use linux btw i arch arch arch the linux use arch arch arch arch arch arch i way use arch btw linux linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch btw linux linux linux linux linux linux linux btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch arch btw arch arch arch arch arch arch btw linux linux linux linux linux linux btw arch btw i arch arch arch the linux use linux linux linux linux linux i way use btw arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch i way use arch btw linux linux btw linux linux linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use linux linux linux linux linux linux i way use linux btw i arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use btw arch arch arch arch arch arch arch arch arch arch arch btw linux linux btw i arch arch arch the linux use linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch the linux use arch arch arch arch arch arch i way use btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux i way use btw linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw arch arch arch arch arch arch arch arch arch arch arch arch btw linux btw linux linux linux linux linux linux linux btw arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch the linux use linux linux linux linux i way use linux btw i arch arch arch the linux use arch arch arch arch arch arch i way use arch btw linux btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use btw linux linux linux btw arch arch arch arch arch arch arch arch arch arch arch arch arch btw linux linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux i way use linux linux linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch btw arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch btw linux linux linux btw i arch arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch i way use btw arch arch arch arch arch arch btw linux linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch the linux use arch arch arch arch arch i way use arch btw i arch arch arch arch the linux use linux linux linux linux i way use linux btw i arch arch arch arch arch the linux use linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw arch btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use btw linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch btw i arch arch arch the linux use arch arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux i way use btw linux linux btw i arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use btw arch arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw arch arch arch arch arch btw i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch i way use btw i arch arch arch arch the linux use arch arch arch arch arch arch i way use btw i arch arch arch the linux use linux linux linux linux linux i way use btw i arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch arch arch btw i arch arch arch the linux use linux linux linux linux linux i way use btw i arch arch arch the linux use arch arch arch arch arch i way use btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch the linux use arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch the linux use linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux i way use btw linux linux btw btw arch arch btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux linux i way use linux linux linux btw use \n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, this is obviously a brainfuck language right? Yep. &lt;a href=&quot;https://github.com/OverMighty/i-use-arch-btw&quot;&gt;This&lt;/a&gt; is the first result if you search “I use arch btw” in Google. After compiling the program and giving it the above text as input, you recieve the flag:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><summary type="html">Description</summary></entry><entry><title type="html">Little Mix</title><link href="https://m4rcix.github.io/SecChall21/misc/little_mix" rel="alternate" type="text/html" title="Little Mix" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/littlemix</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/little_mix">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;Just a little mix, but not this one: &lt;a href=&quot;https://www.youtube.com/watch?v=MkElfR_NPBI&quot;&gt;https://www.youtube.com/watch?v=MkElfR_NPBI&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nc challenges.crysys.hu 5029&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: tk&lt;/li&gt;
+  &lt;li&gt;Difficulty: medium&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;This challenge was a mini-quiz, with some “trivia” questions from all six categories present in the SecChallenge. Most of them are simple questions e.g. basic XOR in the crypto section. All you have to do here, is answer all 18 questions, and you get the flag. That simple. The only part I struggled with initially, was where you had to reverse a ‘basic’ x86 code. But after doing some research on x86 Opcodes, I was able to solve it even by hand, on paper (!). If you want the easy way out, just click &lt;a href=&quot;https://www.google.com/&quot;&gt;this&lt;/a&gt; :)&lt;/p&gt;
+
+&lt;p&gt;The acquired flag is:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">TBD</title><link href="https://m4rcix.github.io/SecChall21/misc/TBD" rel="alternate" type="text/html" title="TBD" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/tbd</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/TBD">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;TBD&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: You should be able to mount the file system and view every file without running into corrupted files. If you encounter corrupted files, it is probably because the filesystem was not correctly mounted/unpacked.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Also note: For this challenge, you’ll have only 100 attempt to find the flag, so don’t guess too much!&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: kapi&lt;/li&gt;
+  &lt;li&gt;Difficulty: hard&lt;/li&gt;
+  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Misc/TDB/finalfinalversionforrealthistime&quot;&gt;finalfinalversionforrealthistime&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Getting a random file, first thing to do is basic recon, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exiftool&lt;/code&gt; etc. on it, see what comes up.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;file finalfinalversionforrealthistime 
+finalfinalversionforrealthistime: Linux jffs2 filesystem data little endian
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Some other challenge had this jffs2 extraction &lt;a href=&quot;https://github.com/sviehb/jefferson&quot;&gt;tool&lt;/a&gt; linked to it, so I gave it a try. After extracting the FS, the first thing I saw was a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;README&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I hate coming up with flags, they always sound lame.
+So with this challenge I wanted to make the perfect flag.
+I may have gone a bit overboard though...
+Anyways I wrote all the flag candidates under /pi/flags/ folder in multiple
+files, so I can organize them, and select the best one.
+Sadly I now realize, that I accidentally overwrote the perfect flag,
+and I can't remember it. 
+Luckily I can remember that I wrote it in the file &quot;flag404&quot; on
+the 5. line at exactly 1612346514 unix time.
+I must have overwritten it later, because I can't find it anymore.
+Can you help me?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Researching the newly found information, I realize you can get his file back, since the journaling mechanism implemented by JFFS2… however, this might have been a massive oversight by the creator, but if you extract the filesystem with the tool mentioned above, you get your hands on the mentioned file immediately. Then you can just read the flag:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">キーボード・レイアウト</title><link href="https://m4rcix.github.io/SecChall21/misc/weeb" rel="alternate" type="text/html" title="キーボード・レイアウト" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/weeb</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/weeb">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;You have sneaked a peek (and you happen to have photographic memory) at the phone of a colleague.&lt;/p&gt;
+
+&lt;p&gt;He is a bit of a weeb, but you know he doesn’t actually speak Japanese.&lt;/p&gt;
+
+&lt;p&gt;What could this mean on his phone?&lt;/p&gt;
+
+&lt;p&gt;author: kapi&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author: kapi&lt;/li&gt;
+  &lt;li&gt;Difficulty: easy&lt;/li&gt;
+  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Misc/Web/screenshot.jpg&quot;&gt;screenshot.jpg&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/SecChall21/Misc/Weeb/screenshot.jpg&quot; alt=&quot;screenshot.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Looking at the picture, we can see the guy used Google Japanese Input to write that monstrosity out. So I guess why not, set the keyboard to the same layout on my phone, and started going ham in the Notes section of my phone. I soon realized two things:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;It was like writing sms “Back in my day”&lt;/li&gt;
+  &lt;li&gt;The picture also had an “sms-pad”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Putting these two together, I started looking at what the output was, how it was achieved on the Japanese Input, then mirrored it to the sms-pad. One-by-one, I got the letters of the flag, which was:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge" /><summary type="html">Description</summary></entry></feed>

