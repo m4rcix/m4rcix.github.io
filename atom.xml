@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="m4rcix" />
 <script type="application/ld+json">
-{"description":"in my best possible Obi-Wan Kenobi impression Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)","@type":"WebPage","headline":"m4rcix","url":"https://m4rcix.github.io/atom.xml","author":{"@type":"Person","name":"m4rcix"},"@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"m4rcix","url":"https://m4rcix.github.io/atom.xml","author":{"@type":"Person","name":"m4rcix"},"description":"in my best possible Obi-Wan Kenobi impression Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
@@ -64,7 +64,7 @@
  <title>m4rcix</title>
  <link href="https://m4rcix.github.io/atom.xml" rel="self"/>
  <link href="https://m4rcix.github.io/"/>
- <updated>2021-03-17T20:28:10+00:00</updated>
+ <updated>2021-03-18T09:39:14+00:00</updated>
  <id>https://m4rcix.github.io</id>
  <author>
    <name></name>
@@ -360,7 +360,7 @@ https://poison-for-tomorrow.secchallenge.crysys.hu/index.php?page&lt;span class=
 
 &lt;ul&gt;
   &lt;li&gt;The first five character summed must equal 385&lt;/li&gt;
-  &lt;li&gt;The product of the 2nd quintet’s product % 512 = 420&lt;/li&gt;
+  &lt;li&gt;The product of the 2nd quintet % 512 = 420&lt;/li&gt;
   &lt;li&gt;i[0] == i[4] &amp;amp;&amp;amp; i[1] == i[3] &amp;amp;&amp;amp; i[2] == ‘E’ for the 3rd quintet&lt;/li&gt;
   &lt;li&gt;j[0] == j[1] - ‘\u0001’ &amp;amp;&amp;amp; j[1] == j[2] - ‘\u0001’ &amp;amp;&amp;amp; j[2] == j[3] - ‘\u0002’ &amp;amp;&amp;amp; j[3] == j[4] - ‘\u0003’ for the 4th quintet&lt;/li&gt;
   &lt;li&gt;and all quintets must be upper case&lt;/li&gt;
