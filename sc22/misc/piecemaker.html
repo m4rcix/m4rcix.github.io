@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Piecemaker | m4rcix</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Piecemaker" />
+<meta name="author" content="m4rcix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Thank god there were only two" />
+<meta property="og:description" content="Thank god there were only two" />
+<link rel="canonical" href="https://m4rcix.github.io/sc22/misc/piecemaker" />
+<meta property="og:url" content="https://m4rcix.github.io/sc22/misc/piecemaker" />
+<meta property="og:site_name" content="m4rcix" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Piecemaker" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"m4rcix"},"dateModified":"2022-03-16T00:00:00+00:00","datePublished":"2022-03-16T00:00:00+00:00","description":"Thank god there were only two","headline":"Piecemaker","mainEntityOfPage":{"@type":"WebPage","@id":"https://m4rcix.github.io/sc22/misc/piecemaker"},"url":"https://m4rcix.github.io/sc22/misc/piecemaker"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">m4rcix<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        
+        
+        <a class="color-cyan-hover" href="https://twitter.com/MarcixWasTaken"><i class="fab fa-twitter-square"></i></a>
+        
+        
+        
+        <a class="color-purple-hover" href="https://www.twitch.tv/marcix"><i class="fab fa-twitch"></i></a>
+        
+        
+        
+        <a class="color-red-hover" href="https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA"><i class="fab fa-youtube"></i></a>
+        
+        
+        
+        <a class="color-yellow-hover" href="https://github.com/m4rcix"><i class="fab fa-github-square"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://www.linkedin.com/in/marton-bak-574a59201/"><i class="fab fa-linkedin"></i></a>
+        
+        
+        
+        <a class="color-green-hover" href="https://app.hackthebox.eu/profile/367067"><i class="fa fa-cube"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://discord.com/invite/wGHG5Aj"><i class="fab fa-discord"></i></a>
+        
+        
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<div class="post">
+  <h1 class="post-title">Piecemaker</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/misc/">misc</a>
+      
+      <a class="tag" href="/tag/secchallenge22/">secchallenge22</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 16 Mar 2022</div>
+  
+  <noscript>
+    <div class="post-description">Thank god there were only two</div>
+  </noscript>
+  <div id="animated-post-description" class="post-description" style="display: none;"></div>
+  
+  <h2 id="description">Description</h2>
+
+<p>There is a secret hidden deep in the DC universe. It’s a conspiracy… Or is it?</p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachments: <a href="/media/sc22/misc/piecemaker/piecemaker.tar.gz">piecemaker.tar.gz</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-initial-puzzle">0x1 initial puzzle</h3>
+
+<p>Extracting the files from the given archive, we get tons of puzzle pieces. The task seems simple, put it together. With a bit of python magic, we can remove most of the green background, and put the puzzle pieces together using <code class="language-plaintext highlighter-rouge">GIMP</code> for example.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">images</span> <span class="o">=</span> <span class="n">glob</span><span class="p">.</span><span class="n">glob</span><span class="p">(</span><span class="s">"../*.jpg"</span><span class="p">)</span>
+
+<span class="n">pr</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"Status"</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">convert</span><span class="p">(</span><span class="s">"RGBA"</span><span class="p">)</span>
+    <span class="n">datas</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getdata</span><span class="p">()</span>
+
+
+    <span class="n">newData</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">240</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">newData</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">newData</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="n">img</span><span class="p">.</span><span class="n">putdata</span><span class="p">(</span><span class="n">newData</span><span class="p">)</span>
+    <span class="n">img</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s">.png"</span><span class="p">,</span> <span class="s">"PNG"</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">pr</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">pr</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/media/sc22/misc/piecemaker/puzzle.png" alt="image" /></p>
+
+<p>This had me puzzled (haHa) for a while, but after googling some languages commonly used in CTFs, I found out about <code class="language-plaintext highlighter-rouge">Klingon</code>. Using some <code class="language-plaintext highlighter-rouge">ABCs</code> found online I could decode the following text on the image:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this is christopher smith known as p
+eacemaker i love formula one aka f1
+as well as f2 and f3 but you know wh
+at would be even better f5 i also lo
+ve java but scripting should be bann
+ed the whole password is in gold
+
+i cherish peace with all my heart
+i dont care how many men women and
+children i need to kill to get it
+</code></pre></div></div>
+
+<p>This next part required a hint from the author, since everyone was stuck on this part for a moment. The hint came:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>We've just received an urgent transmission from Peacemaker telling us his favorite dinosaur is stegosaurus.
+</code></pre></div></div>
+<p>Alright, a stego challenge, nothing I haven’t knew before. But this finally led me to google for <code class="language-plaintext highlighter-rouge">stego f5 java</code> insead of <code class="language-plaintext highlighter-rouge">f5 java</code>. And trust me, it made all the diference (Why would you name a firewall company after a stego tool or vice versa???). I wrote a <code class="language-plaintext highlighter-rouge">bash</code> script to extract whatever is hidden inside the images (just so you see other things on this blog besides python scripts):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">declare</span> <span class="nt">-i</span> <span class="nv">c</span><span class="o">=</span>0
+
+<span class="nb">mkdir</span> <span class="nt">-p</span> out/
+
+<span class="k">for </span>f <span class="k">in </span>piecemaker/<span class="k">*</span>.jpg
+<span class="k">do
+	</span>java <span class="nt">-jar</span> f5.jar x <span class="nt">-e</span> out/<span class="nv">$c</span>.gz <span class="nv">$f</span> <span class="nt">-p</span> <span class="s2">"i cherish peace with all my heart i dont care how many men women and children i need to kill to get it"</span><span class="p">;</span>
+	c+<span class="o">=</span>1	
+<span class="k">done
+
+</span><span class="nb">cd </span>out/
+<span class="nb">rm </span>91.gz 92.gz 93.gz 94.gz 95.gz 96.gz 97.gz 98.gz 99.gz 100.gz 101.gz 102.gz
+<span class="nb">rm </span>103.gz 104.gz 105.gz 106.gz 107.gz 108.gz 109.gz 110.gz 111.gz
+
+<span class="k">for </span>file <span class="k">in</span> <span class="k">*</span>.gz
+<span class="k">do
+	</span><span class="nb">tar </span>zxvf <span class="nv">$file</span>
+<span class="k">done</span>
+</code></pre></div></div>
+
+<h3 id="0x2-joyride-to-the-flag">0x2 joyride to the flag</h3>
+
+<p>At this point, I know, I had the flag… there was only a small problem, again, it was in pieces. Luckily the creator didn’t make any more matryoshkas, or else I would have been sitting here for quite some time.
+Piece by piece, I put together the puzzle, which contained the flag as an image:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>
+
+</div>
+
+
+
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/crypto/" class="set-1">crypto</a> <a href="/tag/crysys/" class="set-1">crysys</a> <a href="/tag/dnspy/" class="set-1">dnSpy</a> <a href="/tag/hardware/" class="set-3">hardware</a> <a href="/tag/misc/" class="set-3">misc</a> <a href="/tag/pwn/" class="set-2">pwn</a> <a href="/tag/reverse/" class="set-2">reverse</a> <a href="/tag/secchallenge/" class="set-5">secchallenge</a> <a href="/tag/secchallenge22/" class="set-5">secchallenge22</a> <a href="/tag/web/" class="set-4">web</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = 'Thank god there were only two';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits"><a href="https://github.com/bitbrain/jekyll-dash">dash</a> theme for Jekyll by <a href="https://github.com/bitbrain">bitbrain</a> made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

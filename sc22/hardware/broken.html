@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Broken | m4rcix</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Broken" />
+<meta name="author" content="m4rcix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Just buy the display and win LUL" />
+<meta property="og:description" content="Just buy the display and win LUL" />
+<link rel="canonical" href="https://m4rcix.github.io/sc22/hardware/broken" />
+<meta property="og:url" content="https://m4rcix.github.io/sc22/hardware/broken" />
+<meta property="og:site_name" content="m4rcix" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Broken" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"m4rcix"},"dateModified":"2022-03-16T00:00:00+00:00","datePublished":"2022-03-16T00:00:00+00:00","description":"Just buy the display and win LUL","headline":"Broken","mainEntityOfPage":{"@type":"WebPage","@id":"https://m4rcix.github.io/sc22/hardware/broken"},"url":"https://m4rcix.github.io/sc22/hardware/broken"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">m4rcix<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        
+        
+        <a class="color-cyan-hover" href="https://twitter.com/MarcixWasTaken"><i class="fab fa-twitter-square"></i></a>
+        
+        
+        
+        <a class="color-purple-hover" href="https://www.twitch.tv/marcix"><i class="fab fa-twitch"></i></a>
+        
+        
+        
+        <a class="color-red-hover" href="https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA"><i class="fab fa-youtube"></i></a>
+        
+        
+        
+        <a class="color-yellow-hover" href="https://github.com/m4rcix"><i class="fab fa-github-square"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://www.linkedin.com/in/marton-bak-574a59201/"><i class="fab fa-linkedin"></i></a>
+        
+        
+        
+        <a class="color-green-hover" href="https://app.hackthebox.eu/profile/367067"><i class="fa fa-cube"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://discord.com/invite/wGHG5Aj"><i class="fab fa-discord"></i></a>
+        
+        
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<div class="post">
+  <h1 class="post-title">Broken</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/hardware/">hardware</a>
+      
+      <a class="tag" href="/tag/secchallenge22/">secchallenge22</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 16 Mar 2022</div>
+  
+  <noscript>
+    <div class="post-description">Just buy the display and win LUL</div>
+  </noscript>
+  <div id="animated-post-description" class="post-description" style="display: none;"></div>
+  
+  <h2 id="description">Description</h2>
+
+<p>A customer just called. They dropped their Token Locker 3000, shattering both of its <code class="language-plaintext highlighter-rouge">1.3" SH1106 OLED</code> displays. I have to go take care of some business, so I’m gonna need you to recover the data for them. You’ll be able to do it, right?</p>
+
+<p>I’m not sure whether you’re familiar with the Token Locker 3000; it is a handheld crypto token protecting device. It has two screens on the two sides and two sets of keypads and buttons. When you start up the device, you have to enter two separate passwords, and if it checks out, it displays two QR codes containing the token.</p>
+
+<p>Unfortunately, we are out of replacement displays (damn supply chain shortages); thus, replacing them is not an option. However, I recorded the signals of the displays for you while the user entered their password (correctly, I hope), so you’ll have to just work out how things work. The silkscreen labels of the display’s pins are <code class="language-plaintext highlighter-rouge">GND</code>, <code class="language-plaintext highlighter-rouge">VCC</code>, <code class="language-plaintext highlighter-rouge">SDA</code>, <code class="language-plaintext highlighter-rouge">SCL</code>.</p>
+
+<p><em>Note: The SH1106 is a cheap copy of the SSD1306. Depending on the resources you manage to find, you may need to use both’s documentation, but keep in mind that they are not 100% identical.</em></p>
+
+<ul>
+  <li>Author: csf3r3ncz1</li>
+  <li>Attachments: <a href="/media/sc22/hardware/broken/challenge.sal">challenge.sal</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>This challenge was seemingly comparable to last years <a href="/SecChall21/hardware/crystal">Crystal from the past</a> challenge. Should be easy. It was, but at what cost?</p>
+
+<p>I quickly found out, that the provided data capture is an <code class="language-plaintext highlighter-rouge">I2C</code> communication, transmitting the display data. Googling around I found <a href="/media/sc22/hardware/broken/SH1106.pdf">this</a> manual, which is ONLY 53 PAGES LONG.</p>
+
+<p>Understanding how the data delivered via the SDA line is interpreted by the display was quite the reading, but slowly I gathered the required knowledge to implement something that can recover me the displayed data.</p>
+
+<p>I exported the data from Salae’s Logic Analyzer to a <code class="language-plaintext highlighter-rouge">.csv</code> file, and implemented part of the protocol using python:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># saves an image of size width x height as name supplied
+#TODO: adapt code to display the matrix instead
+</span><span class="k">def</span> <span class="nf">newImg</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">display</span><span class="p">):</span>
+    <span class="n">nextisBlack</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">display</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">img</span><span class="p">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">img</span><span class="p">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">img</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="c1"># turns 0x00 to 00000000 e.g.
+</span><span class="k">def</span> <span class="nf">hex_to_bin</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+	<span class="n">b</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">16</span><span class="p">))[</span><span class="mi">2</span><span class="p">:]</span>
+	<span class="n">padlen</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+	<span class="k">return</span> <span class="s">"0"</span><span class="o">*</span><span class="n">padlen</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># note keeping section
+</span><span class="n">display_height</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">display_width</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">csvdata</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># parse csv data from SalaeLogic2
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'signals.csv'</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+	<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+	<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+		<span class="n">csvdata</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="n">display</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">display_width</span><span class="p">,</span> <span class="n">display_height</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">c0</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># c0=0 last control, only data after; c0=1 following 2 is: data, cntrl
+</span><span class="n">dc</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># dc=0 the data byte is for command operation, dc=1 RAM operation
+</span>
+<span class="n">current</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 0 if control byte, 1 if data byte is coming, we start /w control
+</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">currx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">curry</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">freq_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">multiplex_ration_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">display_offset_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dcdc_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">common_pads_config_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">contrast_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dispre_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vcom_deselect_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">dcdc_status</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">column_addr_low</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">column_addr_high</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">lower_set</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">upper_set</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">page_addr</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">drawn</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">img_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">ram_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">csvdata</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'start'</span><span class="p">:</span>
+		<span class="c1">#print('----- START -----')
+</span>		<span class="n">c0</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="n">dc</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="c1">#reset everything here
+</span>		<span class="k">continue</span>
+	<span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'stop'</span><span class="p">:</span>
+		<span class="c1">#print('----- STOP -----')
+</span>		<span class="k">continue</span>
+	<span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'data'</span><span class="p">:</span>
+		<span class="n">byte</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="s">'data'</span><span class="p">]</span>
+		<span class="n">bits</span> <span class="o">=</span> <span class="n">hex_to_bin</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span>
+		<span class="n">byte</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+		<span class="c1"># control byte is current
+</span>		<span class="k">if</span> <span class="n">current</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">c0</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+			<span class="n">dc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+			<span class="n">current</span> <span class="o">=</span> <span class="mi">1</span>
+			<span class="k">continue</span>		
+		<span class="c1">#current byte is data byte
+</span>		<span class="k">if</span> <span class="n">current</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="c1"># if c0 was set, next is a control byte
+</span>			<span class="k">if</span> <span class="n">c0</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="c1"># data byte for command op
+</span>			<span class="k">if</span> <span class="n">dc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">ram_count</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Data RAM calls: </span><span class="si">{</span><span class="n">ram_count</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+					<span class="n">ram_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+				<span class="k">if</span> <span class="n">freq_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Freq: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="si">}</span><span class="s"> , Div: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+					<span class="n">freq_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># 2nd byte of multiplex ration mode
+</span>				<span class="k">if</span> <span class="n">multiplex_ration_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Multiplex ration: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+					<span class="n">multiplex_ration_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># 2nd byte of display offset mode
+</span>				<span class="k">if</span> <span class="n">display_offset_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Display offset: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+					<span class="n">display_offset_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># dcdc control mode
+</span>				<span class="k">if</span> <span class="n">dcdc_control_mode_set</span><span class="p">:</span>
+					<span class="n">dcdc_status</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'DCDC-Control Mode set: </span><span class="si">{</span><span class="n">dcdc_status</span><span class="si">}</span><span class="s"> (</span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span><span class="si">}</span><span class="s">) TODO'</span><span class="p">)</span>
+					<span class="n">dcdc_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># common pads config control mode
+</span>				<span class="k">if</span> <span class="n">common_pads_config_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Common Pads mode set: </span><span class="si">{</span><span class="n">bits</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">common_pads_config_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># contrast control mode
+</span>				<span class="k">if</span> <span class="n">contrast_control_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Contrast mode set: </span><span class="si">{</span><span class="n">byte</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">contrast_control_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># dis/precharge control mode
+</span>				<span class="k">if</span> <span class="n">dispre_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Dis/Pre-charge mode set. Dis: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="si">}</span><span class="s">, Pre: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">dispre_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="c1"># dis/precharge control mode
+</span>				<span class="k">if</span> <span class="n">vcom_deselect_mode_set</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'VCOM Deselect set: </span><span class="si">{</span><span class="n">byte</span><span class="si">}</span><span class="s"> TODO'</span><span class="p">)</span>
+					<span class="n">vcom_deselect_mode_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">continue</span>
+
+				<span class="k">if</span> <span class="mh">0x00</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x0f</span><span class="p">:</span>
+					<span class="n">column_addr_low</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Setting column lower address to: </span><span class="si">{</span><span class="nb">bin</span><span class="p">(</span><span class="n">column_addr_low</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+					<span class="n">lower_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0x10</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x1f</span><span class="p">:</span>
+					<span class="n">column_addr_high</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Setting column higher address to: </span><span class="si">{</span><span class="nb">bin</span><span class="p">(</span><span class="n">column_addr_high</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+					<span class="n">upper_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0xb0</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xb7</span><span class="p">:</span>
+					<span class="n">page_addr</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0xf</span>
+					<span class="n">curry</span> <span class="o">=</span> <span class="n">page_addr</span> <span class="o">*</span> <span class="mi">8</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Setting page address to: </span><span class="si">{</span><span class="n">page_addr</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xae</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xaf</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="s">"Display ON/OFF TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xd5</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Oscillator Frequency mode set TODO"</span><span class="p">)</span>
+					<span class="n">freq_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xa8</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Multiplex Ration Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">multiplex_ration_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xd3</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Display Offset Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">display_offset_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0x40</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x7f</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set Display start line: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xad</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"DC-DC Control Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">dcdc_control_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0xa0</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xa1</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set segment re-map: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xc0</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xc8</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set common output scan direction: </span><span class="si">{</span><span class="n">bits</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xda</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Common Pads Config Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">common_pads_config_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0x81</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Contrast Control Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">contrast_control_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xd9</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Dis/Pre-charge period mode set TODO"</span><span class="p">)</span>
+					<span class="n">dispre_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0xdb</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"VCOM Deselect Mode Set TODO"</span><span class="p">)</span>
+					<span class="n">vcom_deselect_mode_set</span> <span class="o">=</span> <span class="mi">1</span>
+				<span class="k">elif</span> <span class="mh">0x30</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0x33</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set pump voltage value: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xa6</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xa7</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set normal/reverse display: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="n">byte</span> <span class="o">==</span> <span class="mh">0x20</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"CSONGI PLS TODO"</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="mh">0xa4</span> <span class="o">&lt;=</span> <span class="n">byte</span> <span class="ow">and</span> <span class="n">byte</span> <span class="o">&lt;=</span> <span class="mh">0xa5</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Set entire display ON/OFF: </span><span class="si">{</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="si">}</span><span class="s"> TODO"</span><span class="p">)</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Unknown command op: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+					<span class="nb">exit</span><span class="p">()</span>
+
+				<span class="k">if</span> <span class="n">lower_set</span> <span class="ow">and</span> <span class="n">upper_set</span><span class="p">:</span>
+					<span class="n">lower_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="n">upper_set</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="c1">#currx = column_addr_high &lt;&lt; 4 | column_addr_low
+</span>					<span class="n">currx</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Set collumn to: </span><span class="si">{</span><span class="n">currx</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+				<span class="k">continue</span>
+			<span class="c1">#data byte for RAM op
+</span>			<span class="k">if</span> <span class="n">dc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="n">ram_count</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="c1">#print(f"RAM op {bits}")
+</span>				<span class="n">drawn</span> <span class="o">=</span> <span class="bp">True</span>
+				<span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+				<span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+					<span class="n">display</span><span class="p">[</span><span class="n">currx</span><span class="p">][</span><span class="n">curry</span> <span class="o">+</span> <span class="n">offset</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span>
+					<span class="n">offset</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="c1">#increment the column
+</span>				<span class="n">currx</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="c1"># if we reach the end of the screen, go to next page
+</span>				<span class="k">if</span> <span class="n">currx</span> <span class="o">&gt;</span> <span class="mi">127</span><span class="p">:</span>
+					<span class="n">currx</span> <span class="o">=</span> <span class="mi">0</span>
+					<span class="c1">#increment page modulo 8
+</span>					<span class="n">prev_page_addr</span> <span class="o">=</span> <span class="n">page_addr</span>
+					<span class="n">page_addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">page_addr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span>
+					<span class="c1">#set y cordinate
+</span>					<span class="n">curry</span> <span class="o">=</span> <span class="n">page_addr</span> <span class="o">*</span> <span class="mi">8</span>
+
+					<span class="k">if</span> <span class="n">prev_page_addr</span> <span class="o">&gt;</span> <span class="n">page_addr</span><span class="p">:</span>
+						<span class="n">newImg</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">img_count</span><span class="p">)</span> <span class="o">+</span> <span class="s">".png"</span><span class="p">,</span> <span class="n">display_width</span><span class="p">,</span><span class="n">display_height</span><span class="p">,</span> <span class="n">display</span><span class="p">)</span>
+						<span class="n">img_count</span> <span class="o">+=</span> <span class="mi">1</span>
+						<span class="n">display</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">display_width</span><span class="p">,</span> <span class="n">display_height</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+
+			<span class="k">continue</span>
+</code></pre></div></div>
+
+<p>It was quite buggy, and the “screenshots” I managed to build weren’t necessary correct, but were good enough where they needed to be (probably because Csongi is a good guy, and didn’t wanted to make it any harder).</p>
+
+<p><img src="/media/sc22/hardware/broken/0.png" alt="image" /></p>
+
+<p>I managed to build images like the one above, and scrolling through them, the last two images contained the flag:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>
+
+</div>
+
+
+
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/crypto/" class="set-1">crypto</a> <a href="/tag/crysys/" class="set-1">crysys</a> <a href="/tag/dnspy/" class="set-1">dnSpy</a> <a href="/tag/hardware/" class="set-3">hardware</a> <a href="/tag/misc/" class="set-3">misc</a> <a href="/tag/pwn/" class="set-2">pwn</a> <a href="/tag/reverse/" class="set-2">reverse</a> <a href="/tag/secchallenge/" class="set-5">secchallenge</a> <a href="/tag/secchallenge22/" class="set-5">secchallenge22</a> <a href="/tag/web/" class="set-4">web</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = 'Just buy the display and win LUL';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits"><a href="https://github.com/bitbrain/jekyll-dash">dash</a> theme for Jekyll by <a href="https://github.com/bitbrain">bitbrain</a> made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>

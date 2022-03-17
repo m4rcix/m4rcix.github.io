@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>falleen system | m4rcix</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="falleen system" />
+<meta name="author" content="m4rcix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Pretty easy despite the low solve rate" />
+<meta property="og:description" content="Pretty easy despite the low solve rate" />
+<link rel="canonical" href="https://m4rcix.github.io/sc22/reverse/falleen_system" />
+<meta property="og:url" content="https://m4rcix.github.io/sc22/reverse/falleen_system" />
+<meta property="og:site_name" content="m4rcix" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="falleen system" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"m4rcix"},"dateModified":"2022-03-16T00:00:00+00:00","datePublished":"2022-03-16T00:00:00+00:00","description":"Pretty easy despite the low solve rate","headline":"falleen system","mainEntityOfPage":{"@type":"WebPage","@id":"https://m4rcix.github.io/sc22/reverse/falleen_system"},"url":"https://m4rcix.github.io/sc22/reverse/falleen_system"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" /><link type="application/atom+xml" rel="alternate" href="https://m4rcix.github.io/feed.xml" title="m4rcix" /></head>
+<body><div class="site-header">
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">m4rcix<b class="command_prompt"></b><b class="blinking_cursor">_</b></a>
+    <span class="social_links">
+        
+        
+        <a class="color-cyan-hover" href="https://twitter.com/MarcixWasTaken"><i class="fab fa-twitter-square"></i></a>
+        
+        
+        
+        <a class="color-purple-hover" href="https://www.twitch.tv/marcix"><i class="fab fa-twitch"></i></a>
+        
+        
+        
+        <a class="color-red-hover" href="https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA"><i class="fab fa-youtube"></i></a>
+        
+        
+        
+        <a class="color-yellow-hover" href="https://github.com/m4rcix"><i class="fab fa-github-square"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://www.linkedin.com/in/marton-bak-574a59201/"><i class="fab fa-linkedin"></i></a>
+        
+        
+        
+        <a class="color-green-hover" href="https://app.hackthebox.eu/profile/367067"><i class="fa fa-cube"></i></a>
+        
+        
+        
+        <a class="color-blue-hover" href="https://discord.com/invite/wGHG5Aj"><i class="fab fa-discord"></i></a>
+        
+        
+    </span>
+  </div>
+</div>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<div class="post">
+  <h1 class="post-title">falleen system</h1>
+  
+  <div class="post-tags">
+      
+      <a class="tag" href="/tag/reverse/">reverse</a>
+      
+      <a class="tag" href="/tag/secchallenge22/">secchallenge22</a>
+      
+  </div>
+  
+  <div class="post-date">Published on 16 Mar 2022</div>
+  
+  <noscript>
+    <div class="post-description">Pretty easy despite the low solve rate</div>
+  </noscript>
+  <div id="animated-post-description" class="post-description" style="display: none;"></div>
+  
+  <h2 id="description">Description</h2>
+
+<p>We’ve managed to save magnetic tape from the bombarded remains of our capital. Our last hope in the fight against the dark side. But it is encrypted and even our sharpest engineers were unable to crack the code.</p>
+
+<p>Could you acquire the flag and save our humble species with it?</p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachment: <a href="/media/sc22/reverse/falleen/magnetic-tape.dd">magnetic-tape.dd</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>First things first, what file are we looking at. Running <code class="language-plaintext highlighter-rouge">file</code> on it, gives us the following answer:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>magnetic-tape.dd: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,2), end-CHS (0x3ff,255,63), startsector 1, 40959 sectors, extended partition table (last)
+</code></pre></div></div>
+
+<p>Ok, so we are looking at some sort of disk image. Running <code class="language-plaintext highlighter-rouge">binwalk</code> on it we can see, that there is a LUKS image inside, which we can extract using <code class="language-plaintext highlighter-rouge">dd</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>magnetic-tape.dd <span class="nv">of</span><span class="o">=</span>luks.part <span class="nv">skip</span><span class="o">=</span>2048 <span class="nv">count</span><span class="o">=</span>38878
+</code></pre></div></div>
+<p>LUKS is a way of encrypting disks on Linux, so we are going to need a key if we want to progress further. Luckily for us, we hit the jackpot on the first try. Running <code class="language-plaintext highlighter-rouge">strings</code> on the original file gives us tons of gibberish (as usual) and this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The key is:down with the separatists
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">cryptsetup</code>, we can open the partition:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup open <span class="nt">--type</span> luks luks.part luks.opened
+</code></pre></div></div>
+
+<p>Mounting the opened partition, aaaaaaaaaand, nothing. I was puzzled for a minute. But luckily we hit the jackpot twice in a row. Where could they hide the flag if not in a file? Of cource it will be in the opened partition.
+Running <code class="language-plaintext highlighter-rouge">strings</code> on it yields us the flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>
+
+</div>
+
+
+
+
+
+
+
+  
+  <h2>all tags</h2>
+  <div class="tag-cloud"><a href="/tag/ctf/" class="set-1">CTF</a> <a href="/tag/crypto/" class="set-1">crypto</a> <a href="/tag/crysys/" class="set-1">crysys</a> <a href="/tag/dnspy/" class="set-1">dnSpy</a> <a href="/tag/hardware/" class="set-3">hardware</a> <a href="/tag/misc/" class="set-3">misc</a> <a href="/tag/pwn/" class="set-2">pwn</a> <a href="/tag/reverse/" class="set-2">reverse</a> <a href="/tag/secchallenge/" class="set-5">secchallenge</a> <a href="/tag/secchallenge22/" class="set-5">secchallenge22</a> <a href="/tag/web/" class="set-4">web</a></div>
+  
+
+
+
+
+<script>
+  let i = 0;
+  const text = 'Pretty easy despite the low solve rate';
+  const speed = parseInt('50');
+  
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById('animated-post-description').innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  document.getElementById('animated-post-description').style.display = 'initial';
+  typeWriter();
+</script>
+
+      </div>
+    </main><footer class="site-footer">
+  <div class="wrapper">
+    <div class="credits"><a href="https://github.com/bitbrain/jekyll-dash">dash</a> theme for Jekyll by <a href="https://github.com/bitbrain">bitbrain</a> made with <i class="fas fa-heart"></i><div class="toggleWrapper">
+    <input type="checkbox" class="dn" id="theme-toggle" onclick="modeSwitcher()" checked />
+    <label for="theme-toggle" class="toggle">
+    <span class="toggle__handler">
+      <span class="crater crater--1"></span>
+      <span class="crater crater--2"></span>
+      <span class="crater crater--3"></span>
+    </span>
+        <span class="star star--1"></span>
+        <span class="star star--2"></span>
+        <span class="star star--3"></span>
+        <span class="star star--4"></span>
+        <span class="star star--5"></span>
+        <span class="star star--6"></span>
+    </label>
+</div>
+<script type="text/javascript">
+const theme = localStorage.getItem('theme');
+
+if (theme === "light") {
+    document.documentElement.setAttribute('data-theme', 'light');
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+function activateDarkTheme() {
+    document.getElementById('theme-toggle').checked = true;
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme--dark');
+    document.documentElement.classList.remove('theme--light');
+	document.getElementById("theme-toggle").className = 'light';
+	window.localStorage.setItem('theme', 'dark');
+}
+
+function activateLightTheme() {
+    document.getElementById('theme-toggle').checked = false;
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.add('theme--light');
+    document.documentElement.classList.remove('theme--dark');
+	document.getElementById("theme-toggle").className = 'dark';
+	window.localStorage.setItem('theme', 'light');
+}
+
+if (theme === "dark") {
+    activateDarkTheme();
+} else if (theme === "light") {
+    activateLightTheme();
+} else if  (userPrefers === "light") {
+    activateDarkTheme();
+} else {
+    activateDarkTheme();
+}
+
+function modeSwitcher() {
+	let currentMode = document.documentElement.getAttribute('data-theme');
+	if (currentMode === "dark") {
+	    activateLightTheme();
+	} else {
+	    activateDarkTheme();
+	}
+}
+</script></div>
+  </div>
+</footer>
+
+
+<script>
+      window.FontAwesomeConfig = {
+        searchPseudoElements: true
+      }
+    </script>
+  </body>
+
+</html>
