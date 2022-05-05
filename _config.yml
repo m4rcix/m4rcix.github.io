@@ -1,0 +1,58 @@
+title: m4rcix
+url: https://m4rcix.github.io
+author: m4rcix
+email: 
+description: > # this means to ignore newlines until "show_exerpts:"
+  *in my best possible Obi-Wan Kenobi impression* Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)
+show_excerpts: false # set to true to show excerpts on the homepage
+
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+tag_permalink_style: pretty
+tag_page_layout: tag_page
+tag_page_dir: tag
+
+# jekyll-dash date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+dash:
+  date_format: "%b %-d, %Y"
+  show_author: true
+  show_author_posts: false
+  show_related: false
+
+  # generate social links in footer
+  # supported colors: green, red, orange, blue, cyan, pink, teal, yellow, indigo, purple
+  social_links:
+    - url: https://twitter.com/MarcixWasTaken
+      icon: twitter-square
+      color: cyan
+    - url: https://www.twitch.tv/marcix
+      icon: twitch
+      color: purple
+    - url: https://www.youtube.com/channel/UChaUSPtWwNkUpzrjUW7H0PA
+      icon: youtube
+      color: red
+    - url: https://github.com/m4rcix
+      icon: github-square
+      color: yellow
+    - url: https://www.linkedin.com/in/marton-bak-574a59201/
+      icon: linkedin
+      color: blue
+    - url: https://app.hackthebox.eu/profile/367067
+      icon: cube
+      color: green
+      fa: true
+    - url: https://discord.com/invite/wGHG5Aj
+      icon: discord
+      color: blue
+
+# Build settings
+theme: jekyll-dash
+
+plugins:
+  - liquid-md5
+  - jekyll/tagging
+  
+avatar_source: github
+github_username: m4rcix
